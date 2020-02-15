@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txt_cmtsid"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:text="cmtsid" />
+
+    <TextView
+        android:id="@+id/txt_cmtsName"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@+id/txt_cmtsid"
+        android:textColor="#000000"
+        android:text="cmtsName"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:layout_toRightOf="@+id/txt_cmtsid" />
+
+</RelativeLayout>

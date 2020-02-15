@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+<!--        <TableLayout android:layout_height="match_parent"-->
+<!--            xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            android:layout_width="match_parent">-->
+<!--        <TableRow>-->
+            <ImageButton
+                android:id="@+id/btn_ls"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:src="@android:drawable/ic_menu_search" />
+            <ImageButton
+                android:id="@+id/btn_tt"
+                android:layout_column="2"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:src="@android:drawable/ic_menu_search" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_node"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#ff0"
+                    android:text=" Node "
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+            <TextView
+                android:id="@+id/txt_inteface"
+                android:layout_column="0"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=" Interface "
+                android:textSize="12dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_branch"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=" Branch "
+                android:textSize="12dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_cmts"
+                android:layout_width="135dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=" CMTS "
+                android:textSize="12dp"
+                android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="80dp"
+        android:layout_width="match_parent">
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="70dp"
+            android:layout_width="wrap_content">
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:id="@+id/txt_c1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" SNR : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_c2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" MER : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:id="@+id/txt_snr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" SNR : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_mer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" MER : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="70dp"
+            android:layout_width="wrap_content">
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Fec : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" UnFec : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:id="@+id/txt_fec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Fec : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_unfec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" UnFec : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="70dp"
+            android:layout_width="wrap_content">
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" TxPw : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" RxPw : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:id="@+id/txt_txpw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" TxPw : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_rxpw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" RxPw : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="80dp"
+            android:layout_width="wrap_content">
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Act : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Total : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Reg : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Act : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                android:id="@+id/txt_total"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=" Total : "
+                android:textSize="10dp"
+                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_reg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Reg : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_height="80dp"
+            android:layout_width="wrap_content">
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Fre : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" WTH : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Time : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_fre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Act : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_wth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Total : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=" Reg : "
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

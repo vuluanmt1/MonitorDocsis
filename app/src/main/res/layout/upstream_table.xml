@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_height="55dp"
+                    android:layout_width="match_parent">
+                    <ImageButton
+                        android:id="@+id/btn_ls"
+                        android:layout_width="28dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@android:drawable/ic_menu_search" />
+                    <ImageButton
+                        android:id="@+id/btn_tt"
+                        android:layout_width="28dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@android:drawable/ic_menu_search" />
+                    <TextView
+                        android:id="@+id/txt_node"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000000"
+                        android:text=" Node "
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_inteface"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text=" Interface "
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_branch"
+                        android:layout_marginLeft="3dp"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text=" Branch "
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_snr"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text=" SNR "
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_mer"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text=" MER  "
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_fec"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text="Fec"
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_unfec"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text="UnFec"
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_txpw"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:background="@color/colorWhite"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:text="TxPw"
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_rxpw"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text="RxPw"
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_act"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:background="@color/colorWhite"
+                        android:textColor="#000000"
+                        android:text="Act"
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+                    <TextView
+                        android:id="@+id/txt_total"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:background="@color/colorWhite"
+                        android:text="Total"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txt_reg"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:background="@color/colorWhite"
+                        android:text="Reg"
+                        android:textSize="14dp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_fre"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:background="@color/colorWhite"
+                        android:text=" Act : "
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+                    <TextView
+                        android:id="@+id/txt_wth"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:text="Total"
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+                    <TextView
+                        android:id="@+id/txt_cmts"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000000"
+                        android:background="@color/colorWhite"
+                        android:text=" CMTS "
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+                    <TextView
+                        android:id="@+id/txt_time"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000000"
+                        android:background="@color/colorWhite"
+                        android:text="Reg"
+                        android:textSize="14dp"
+                        android:textStyle="normal"/>
+                    <TextView
+                        android:id="@+id/txt_id_cmts"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000000"
+                        android:visibility="invisible"
+                        android:text=" CmtsID : "
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txt_ifindex"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="#000000"
+                        android:visibility="invisible"
+                        android:text=" Ifindex : "
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

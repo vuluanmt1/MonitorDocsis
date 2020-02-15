@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MonitorDocsis</string>
+    <string name="btn_info">Thông tin</string>
+    <string name="btn_rate">Bình chọn</string>
+    <string name="btn_start">Bắt đầu</string>
+    <string name="btn_dialogs">3000 Câu hội thoại giao tiếp cơ bản</string>
+    <string name="btn_name">Tên tiếng Trung của bạn là gì?</string>
+    <string name="btn_word">Các nhóm từ thường sử dụng trong đời sống</string>
+    <string name="btn_byword">Thành ngữ tục ngữ</string>
+    <string name="btn_listening">Lắng nghe</string>
+    <string name="btn_searching">Tra từ</string>
+    <string name="txt_searching">Nhập vào nội dung cần tra cứu..</string>
+    <string name="txt_vietnamese_name">Nhập vào tên tiếng Việt của bạn</string>
+    <string name="txt_chinese_name">Tên tiếng Trung của bạn</string>
+    <string name="txt_spelling_name">Phiên âm tên tiếng Trung của bạn</string>
+    <string name="btn_get_name">Dịch sang tiếng Trung</string>
+    <!--    <string name="AppID">ca-app-pub-6535818699332550~9068139417</string>-->
+    <!--    <string name="Ad_Banner">ca-app-pub-6535818699332550/1235797145</string>-->
+    <string name="AppID">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="Ad_Banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="txt_email">Địa chỉ email do VTVcab cấp</string>
+    <string name="txt_password">Mật khẩu đăng nhập</string>
+    <string name="txt_welcome">Chào mừng bạn đến với hệ thống của Trung tâm Hạ tầng Viễn thông</string>
+    <string name="btn_login">Đăng nhập</string>
+    <string name="btn_logout">Đăng xuất</string>
+    <string name="btn_get">Lấy thông tin</string>
+    <string name="btn_clear">Xóa trắng</string>
+    <string name="btn_detail">Xem chi tiết</string>
+    <string name="btn_confirm_popup">Xác nhận</string>
+    <string name="title_activity_upstream_his">UpstreamHisActivity</string>
+</resources>

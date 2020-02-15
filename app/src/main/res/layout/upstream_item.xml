@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="370dp">
+
+    <LinearLayout
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:ignore="Suspicious0dp">
+
+        <TextView
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="Node"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="Interface"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="Chi nhánh"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="SNR"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="MER"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="Fec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="UnFec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="TxPw"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="RxPw"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="Act"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="Reg"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="FRE"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="WTH"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:text="Tên CMTS"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        tools:ignore="Suspicious0dp">
+
+        <TextView
+            android:id="@+id/txt_node"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Node"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_inteface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interface"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi nhánh"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_snr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SNR"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_mer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MER"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_fec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_unfec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UnFec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_txpw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TxPw"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_rxpw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RxPw"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Act"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reg"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_fre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FRE"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_wth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="WTH"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_namecmts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tên CMTS"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

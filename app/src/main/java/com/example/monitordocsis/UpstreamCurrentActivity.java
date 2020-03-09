@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -30,20 +31,27 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
     public static final String URL_CURRENT_UPS ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/docsis/api_load_current_upstream.php";
     private JSONArray json_arr_result;
         private JSONArray json_arr_cmts;
+        private JSONArray json_arr_node;
         private ProgressBar progBar;
         private JSONObject json_obj;
         private cmtsAdapter cmtsAdapter;
+        private nodeAdapter nodeAdapter;
+        private ArrayList<nodeModel>arrNode;
         private upstreamCurrentAdapter currentAdapter;
         private ArrayList<cmtsModel>arrCmtsModel;
         private Spinner spinner_cmts,spinner_node;
         private ListView listItem;
         private ArrayList<upstreamCurrentModel>mListItem;
-    private String cmstID;
-    private String nodeID;
+        private String cmstID;
+        private String nodeID;
+        private String donVi;
+        private Button btn_ls_node;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upstream_current);
+        permissionUser permission = (permissionUser) getApplicationContext();
+        donVi =permission.getUnit();
         initView();
         loadCMTS(URL_SEARCH);
         Intent intent = getIntent();
@@ -66,12 +74,13 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
                json_req.put("user_name", "htvt");
                json_req.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
                json_req.put("action", "current_upstream");
+               json_req.put("donvi", donVi);
                json_req.put("data", json_data);
            }
            catch (JSONException err) {
                alert_display("Cảnh báo", "Không thể lấy thông tin Data truyền vào API!\n1. " + err.getMessage( ));
            }
-           Log.d("JSon:",">>>"+json_req);
+
            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_CURRENT_UPS, json_req, new Response.Listener<JSONObject>() {
                @Override
                public void onResponse(JSONObject response) {
@@ -112,7 +121,46 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                cmtsModel cmts = cmtsAdapter.getItem(position);
                cmstID =cmts.getCmtsID();
-
+               final JSONObject json_node = new JSONObject( );
+               try {
+                   JSONObject json_data_item = new JSONObject( );
+                   json_data_item.put("cmtsid", cmstID);
+                   JSONArray json_data = new JSONArray( );
+                   json_data.put(json_data_item);
+                   json_node.put("user_name", "htvt");
+                   json_node.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
+                   json_node.put("donvi",donVi);
+                   json_node.put("action", "node");
+                   json_node.put("data",json_data);
+               }
+               catch (JSONException err) {
+                   alert_display("Cảnh báo", "Không thể lấy thông tin API!\n1. " + err.getMessage( ));
+               }
+               Log.d("json_node:",">>>"+json_node);
+               JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_SEARCH, json_node, new Response.Listener<JSONObject>() {
+                   @Override
+                   public void onResponse(JSONObject response) {
+                       try {
+                           json_arr_node =response.getJSONArray("data");
+                           arrNode = new ArrayList<nodeModel>();
+                           for(int i=0; i < json_arr_node.length(); i++){
+                               json_obj =json_arr_node.getJSONObject(i);
+                               arrNode.add(new nodeModel(json_obj.getString("IFINDEX"),json_obj.getString("IFALIAS")));
+                           }
+                           nodeAdapter = new nodeAdapter(UpstreamCurrentActivity.this,arrNode);
+                           spinner_node.setAdapter(nodeAdapter);
+                       } catch (JSONException e) {
+                           e.printStackTrace();
+                       }
+                   }
+               }, new Response.ErrorListener() {
+                   @Override
+                   public void onErrorResponse(VolleyError error) {
+                       alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n1. " + error.getMessage( ));
+                   }
+               });
+               RequestQueue queue = Volley.newRequestQueue(UpstreamCurrentActivity.this);
+               queue.add(jsonObjectRequest);
            }
 
            @Override
@@ -128,6 +176,7 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
         spinner_node =findViewById(R.id.cb_node);
         progBar = findViewById(R.id.progBar);
         progBar.setVisibility(View.VISIBLE);
+        btn_ls_node = findViewById(R.id.btn_ls_node);
     }
     public void alert_display(String title, String content) {
         new AlertDialog.Builder(UpstreamCurrentActivity.this)
@@ -141,7 +190,9 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
         try {
             json_search1.put("user_name", "htvt");
             json_search1.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
+            json_search1.put("donvi",donVi);
             json_search1.put("action", "cmts");
+
         }
         catch (JSONException err) {
             alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
@@ -165,7 +216,7 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n1. " + error.getMessage( ));
             }
         });
         RequestQueue queue = Volley.newRequestQueue(UpstreamCurrentActivity.this);

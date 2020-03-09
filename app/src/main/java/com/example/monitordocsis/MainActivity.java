@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txt_username;
     private EditText txt_password;
     private TextView txt_welcome;
+    private CheckBox cb_remember_login;
     private Button btn_login;
     private Button btn_logout;
     private Boolean login;
@@ -46,15 +48,12 @@ public class MainActivity extends AppCompatActivity {
         txt_password =findViewById(R.id.txt_password);
         txt_welcome = findViewById(R.id.txt_welcome);
         btn_login =findViewById(R.id.btn_login);
-        btn_logout =findViewById(R.id.btn_logout);
+        cb_remember_login = findViewById(R.id.cb_remember);
         sharedPreferences = getSharedPreferences("INFO", Context.MODE_PRIVATE);
         login = sharedPreferences.getBoolean("login", false);
-        if (login != true) {
-            afterLogout( );
-        }
-        else {
-            afterLogin( );
-        }
+        txt_username.setText(sharedPreferences.getString("user_name",""));
+        txt_password.setText(sharedPreferences.getString("password",""));
+        cb_remember_login.setChecked(sharedPreferences.getBoolean("checked",false));
     }
     @Override
     protected void onStart() {
@@ -63,10 +62,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Global.animator_button(view);
-                if(login!=true){
                     try {
                         final String user_name = String.valueOf(txt_username.getText( ));
-                        String password = String.valueOf(txt_password.getText( ));
+                        final String password = String.valueOf(txt_password.getText( ));
                         //Nạp thông tin đường dẫn thông qua volley
                         //Tạo Json
                         JSONObject json_req = new JSONObject( );
@@ -84,9 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         catch (JSONException err) {
                             alert_display("Cảnh báo", "Không thể lấy thông tin!\n1. " + err.getMessage( ));
                         }
-
                         Log.d("json_req",">>"+json_req);
-//                    alert_display("Info",json_req.toString());
                         //Truyền thông tin qua volley và nhận về kết quả
                         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                                 (Request.Method.POST, URL_BASE, json_req, new Response.Listener<JSONObject>( ) {
@@ -96,24 +92,29 @@ public class MainActivity extends AppCompatActivity {
                                         try {
                                             if (Integer.valueOf(response.getString("code")) == 0) {
                                                 SharedPreferences.Editor editor = sharedPreferences.edit( );
-                                                editor.putBoolean("login", true);
-                                                editor.putString("user_name", user_name);
+                                                json_arr_result = response.getJSONArray("data");
+                                                for(int i=0; i < json_arr_result.length(); i++){
+                                                    json_obj =json_arr_result.getJSONObject(i);
+                                                    permissionUser permission = (permissionUser) getApplicationContext();
+                                                    permission.setUserGroup(json_obj.getString("USERGROUP"));
+                                                    permission.setUnit(json_obj.getString("UNIT"));
+                                                    permission.setPosition(json_obj.getString("POSITION"));
+                                                    permission.setUsername(json_obj.getString("USERNAME"));
+                                                    permission.setPrivilege(json_obj.getString("PRIVILEGE"));
+                                                    permission.setArea(json_obj.getString("AREA"));
+                                                    permission.setBranch(json_obj.getString("BRANCH"));
+                                                }
+                                                if(cb_remember_login.isChecked()){
+                                                    editor.putBoolean("login", true);
+                                                    editor.putString("user_name", user_name);
+                                                    editor.putString("password",password);
+                                                    editor.putBoolean("checked",true);
+                                                }else{
+                                                    editor.remove("user_name");
+                                                    editor.remove("password");
+                                                    editor.remove("checked");
+                                                }
                                                 if (editor.commit( ) == true) {
-                                                    json_arr_result = response.getJSONArray("data");
-                                                    for(int i=0; i < json_arr_result.length(); i++){
-                                                        json_obj =json_arr_result.getJSONObject(i);
-                                                        permissionUser permission = (permissionUser) getApplicationContext();
-
-                                                        permission.setUserGroup(json_obj.getString("USERGROUP"));
-                                                        permission.setUnit(user_name);
-                                                        permission.setPosition(json_obj.getString("POSITION"));
-                                                        permission.setUsername(json_obj.getString("USERNAME"));
-                                                        permission.getPrivilege(json_obj.getString("PRIVILEGE"));
-                                                        permission.getArea(json_obj.getString("AREA"));
-                                                        permission.getBranch(json_obj.getString("BRANCH"));
-
-
-                                                    }
                                                     afterLogin( );
                                                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                                     startActivity(intent);
@@ -142,10 +143,6 @@ public class MainActivity extends AppCompatActivity {
                     catch (Exception err) {
                         alert_display("Cảnh báo", "Lỗi: " + err.getMessage( ));
                     }
-                }else{
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                    startActivity(intent);
-                }
             }
         });
     }

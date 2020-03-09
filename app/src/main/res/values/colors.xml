@@ -9,5 +9,9 @@
     <color name="colorGreen">#00FF00</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#AFA6A6</color>
+    <color name="colorLightGray">#EEEEEE</color>
+    <color name="colorDeepSkyBlue1">#00BFFF</color>
+    <color name="colorTeal">#008080</color>
+
 
 </resources>

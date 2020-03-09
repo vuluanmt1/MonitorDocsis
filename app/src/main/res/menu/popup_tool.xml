@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/pppoe"
+        android:title="PPPoE"/>
+    <item
+        android:id="@+id/tinhieu"
+        android:title="Tín hiệu"/>
+    <item
+        android:id="@+id/hopdong"
+        android:title="Hợp đồng"/>
+    <item
+        android:id="@+id/upgrade_firmware"
+        android:title="Upgrade Firmware"/>
+    <item
+        android:id="@+id/reset_onu"
+        android:title="Reset ONU"/>
+    <item
+        android:id="@+id/lichsu"
+        android:title="Lịch sử"/>
+</menu>

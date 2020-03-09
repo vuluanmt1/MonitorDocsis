@@ -1,9 +1,12 @@
 package com.example.monitordocsis;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -38,7 +41,9 @@ public class upstreamCurrentAdapter extends BaseAdapter {
             view=convertView;
         }
         upstreamCurrentModel item = (upstreamCurrentModel) getItem(position);
-        TextView txt_node = convertView.findViewById(R.id.txt_node_current);
+        Button btn_ls_node = convertView.findViewById(R.id.btn_ls_node);
+
+        final TextView txt_node = convertView.findViewById(R.id.txt_node_current);
         TextView txt_ifdesc = convertView.findViewById(R.id.txt_ifdesc_current);
         TextView txt_snr = convertView.findViewById(R.id.txt_snr_current);
         TextView txt_mer = convertView.findViewById(R.id.txt_mer_current);
@@ -54,8 +59,8 @@ public class upstreamCurrentAdapter extends BaseAdapter {
         TextView txt_micref = convertView.findViewById(R.id.txt_micref_curent);
         TextView txt_mod = convertView.findViewById(R.id.txt_mode_curent);
         TextView txt_time = convertView.findViewById(R.id.txt_time_current);
-        TextView txt_cmtsid = convertView.findViewById(R.id.txt_cmtsid_current);
-        TextView txt_ifindex = convertView.findViewById(R.id.txt_ifindex_current);
+        final TextView txt_cmtsid = convertView.findViewById(R.id.txt_cmtsid_current);
+        final TextView txt_ifindex = convertView.findViewById(R.id.txt_ifindex_current);
         txt_node.setText(mList.get(position).getNode());
         txt_ifdesc.setText(mList.get(position).getIfdesc());
         txt_snr.setText(mList.get(position).getSnr());
@@ -82,6 +87,22 @@ public class upstreamCurrentAdapter extends BaseAdapter {
         Double rx = Double.parseDouble(mList.get(position).getRx());
         Integer act = Integer.parseInt(mList.get(position).getAct());
         Integer total = Integer.parseInt(mList.get(position).getTotal());
+        btn_ls_node.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                String cmtsid = String.valueOf(txt_cmtsid.getText());
+                String ifindex = String.valueOf(txt_ifindex.getText());
+                String node_name = String.valueOf(txt_node.getText());
+                Intent intent = new Intent(v.getContext(), UpstreamHisActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("cmtsid",cmtsid);
+                bundle.putString("ifindex",ifindex);
+                bundle.putString("nodename",node_name);
+                intent.putExtra("data",bundle);
+                v.getContext().startActivities(new Intent[]{new Intent(intent)});
+            }
+        });
         double peractive=0.0;
         if(total ==0){
             peractive =0.0;
@@ -89,11 +110,11 @@ public class upstreamCurrentAdapter extends BaseAdapter {
             peractive = (act*100/total);
         }
         if(snr<10){
-            txt_node.setBackgroundResource(R.color.colorRed);
+            txt_snr.setBackgroundResource(R.color.colorRed);
         }else if(snr >=10 && snr <=18){
-            txt_node.setBackgroundResource(R.color.colorYellow);
+            txt_snr.setBackgroundResource(R.color.colorYellow);
         }else{
-            txt_node.setBackgroundResource(R.color.colorWhite);
+            txt_snr.setBackgroundResource(R.color.colorWhite);
         }
         if(mer >=0 && mer <=28 ){
             txt_mer.setBackgroundResource(R.color.colorRed);

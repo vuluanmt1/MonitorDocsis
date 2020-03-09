@@ -4,10 +4,10 @@
     android:id="@android:id/text1"
     style="@style/spinnerItemStyle"
     android:singleLine="true"
-    android:gravity="center"
+    android:gravity="center|left"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ellipsize="marquee"
-    android:lineSpacingExtra="6dp"
+    android:lineSpacingExtra="8dp"
     android:paddingLeft="2dp"
+    android:ellipsize="none"
     />

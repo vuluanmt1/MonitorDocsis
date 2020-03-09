@@ -50,21 +50,21 @@ public class permissionUser extends Application {
     public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
-
-    public String getArea(String area) {
+    public String getArea() {
         return this.area;
     }
-
     public void setArea(String area) {
         this.area = area;
     }
 
-    public String getBranch(String branch) {
+    public String getBranch() {
         return this.branch;
     }
 
     public void setBranch(String branch) {
         this.branch = branch;
     }
+
+
 
 }

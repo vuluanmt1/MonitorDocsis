@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="PortPon"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="OnuID"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Status"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Mode"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Serial"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Link Uptime"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Rx Power"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Optical Level"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Total RF power level"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_port_pon"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:background="@color/colorLightGray"
+                android:text=" SNR "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_onu_id"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Mer "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Fec "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_mode"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" UnFec "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_serial"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Tx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_link_uptime"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_rx_power"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_optical"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_total_rf"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Ping"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:visibility="invisible"
+                android:text="Ping"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txt_ping"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Ping "
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

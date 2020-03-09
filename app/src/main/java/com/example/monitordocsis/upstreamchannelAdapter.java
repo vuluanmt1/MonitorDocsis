@@ -45,6 +45,7 @@ public upstreamchannelAdapter(List<upstreamchannelModel> mUpstream,final Context
         holder.imgBtn_tt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Global.animator_button(v);
                 String cmtsid = String.valueOf(holder.cmts_id.getText());
                 String ifindex =String.valueOf(holder.ifindex.getText());
                 Intent intent = new Intent(v.getContext(),UpstreamCurrentActivity.class);
@@ -58,6 +59,7 @@ public upstreamchannelAdapter(List<upstreamchannelModel> mUpstream,final Context
         holder.imgBtn_ls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Global.animator_button(v);
                 String cmst = String.valueOf(holder.cmts_id.getText());
                 String ifindex = String.valueOf(holder.ifindex.getText());
                 String node_name =String.valueOf(holder.node.getText());

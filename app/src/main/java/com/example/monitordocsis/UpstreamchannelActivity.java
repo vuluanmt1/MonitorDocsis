@@ -86,6 +86,7 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
     private ImageButton imgBtn_ls, imgBtn_tt;
     private TextView txt_node_title,txt_interface_title,txt_branch_title, txt_snr_title,txt_mer_title,txt_fec_title,
                      txt_unfec_title, txt_tx_title,txt_rx_title,txt_act_title,txt_total_title;
+    private String donVi;
 
 
     @Override
@@ -94,8 +95,7 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         setContentView(R.layout.activity_upstreamchannel);
         bindViews();
         permissionUser permission = (permissionUser) getApplicationContext();
-
-        Log.d("Unit",">>"+permission.getUnit());
+        donVi =permission.getUnit();
         toolbar =findViewById(R.id.toolbar);
         spinner_branch = (Spinner) findViewById(R.id.cb_branch);
         spinner_cmts = (Spinner) findViewById(R.id.cb_cmts);
@@ -207,6 +207,7 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                         json_api.put("user_name", "htvt");
                         json_api.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
                         json_api.put("action", "upstream");
+                        json_api.put("donvi",donVi);
                         json_api.put("data", json_data);
 
                     }catch (Exception e){
@@ -424,7 +425,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
             public boolean onQueryTextSubmit(String s) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String s) {
                 upsAdapter.getFilter().filter(s);
@@ -491,6 +491,7 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                     json_req.put("user_name", "htvt");
                     json_req.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
                     json_req.put("action", "upstream");
+                    json_req.put("donvi",donVi);
                     json_req.put("data", json_data);
                 }
                 catch (JSONException err) {
@@ -513,7 +514,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                                                     json_obj.getString("AVGONLINECMMICREF"),json_obj.getString("UPCHANNELFREQUENCY"),
                                                     json_obj.getString("UPCHANNELWIDTH"),json_obj.getString("TITLE"),json_obj.getString("MODIFIEDDATE"),json_obj.getString("CMTSID"),json_obj.getString("IFINDEX")));
                                         }
-
                                         upsAdapter = new upstreamchannelAdapter(upsModel,UpstreamchannelActivity.this);
                                         Display display = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
                                         LinearLayoutManager linearLayoutManager =new LinearLayoutManager(UpstreamchannelActivity.this);
@@ -601,6 +601,7 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         try {
             json_search.put("user_name", "htvt");
             json_search.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
+            json_search.put("donvi",donVi);
             json_search.put("action", "branch");
         }
         catch (JSONException err) {
@@ -612,9 +613,17 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                 try {
                     json_arr_branch =response.getJSONArray("data");
                     arrBranchModel = new ArrayList<branchModel>();
-                    for(int i=0; i < json_arr_branch.length(); i++){
-                        json_obj =json_arr_branch.getJSONObject(i);
-                        arrBranchModel.add(new branchModel(json_obj.getString("CODE_"),json_obj.getString("DESCRIPTION")));
+                    if(donVi.equals("TTVT") || donVi.equals("CALLCENTER") ||donVi.equals("CN5")){
+                        arrBranchModel.add(new branchModel("all","Tất Cả"));
+                        for(int i=0; i < json_arr_branch.length(); i++){
+                            json_obj =json_arr_branch.getJSONObject(i);
+                            arrBranchModel.add(new branchModel(json_obj.getString("CODE_"),json_obj.getString("DESCRIPTION")));
+                        }
+                    }else{
+                        for(int i=0; i < json_arr_branch.length(); i++){
+                            json_obj =json_arr_branch.getJSONObject(i);
+                            arrBranchModel.add(new branchModel(json_obj.getString("CODE_"),json_obj.getString("DESCRIPTION")));
+                        }
                     }
                     branchAdapter = new branchAdapter(UpstreamchannelActivity.this,arrBranchModel);
                     spinner_branch.setAdapter(branchAdapter);
@@ -636,11 +645,13 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         try {
             json_search1.put("user_name", "htvt");
             json_search1.put("token", "/KnJJ83aii24q2VZmbVMDCDceEzvPvrHPP4jPY2+Qfc=");
+            json_search1.put("donvi",donVi);
             json_search1.put("action", "cmts");
         }
         catch (JSONException err) {
             alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
         }
+        Log.d("json_search1",">>>"+json_search1);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, json_search1, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -739,7 +750,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseSnr(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -758,7 +768,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseMer(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -777,7 +786,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseFec(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -796,7 +804,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseUnFec(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -815,7 +822,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseTx(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -834,7 +840,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseRx(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -853,7 +858,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseAct(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override
@@ -872,7 +876,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
         });
         upsAdapter.notifyDataSetChanged();
     }
-
     private void sortListIncreaseTotal(){
         Collections.sort(upsModel, new Comparator<upstreamchannelModel>() {
             @Override

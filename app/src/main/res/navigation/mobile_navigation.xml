@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_canhbaoonu">
+
+    <fragment
+        android:id="@+id/nav_canhbaoonu"
+        android:name="com.example.monitordocsis.ui.gpon.fragment_canhbao_onu"
+        android:label="@string/menu_canhbaoonu"
+        tools:layout="@layout/fragment_canhbaoonu" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.monitordocsis.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.monitordocsis.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.monitordocsis.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_ql_olt"
+        android:name="com.example.monitordocsis.ui.quanlyolt.FragmentQuanlyOLT"
+        android:label="@string/menu_olt"
+        tools:layout="@layout/fragment_quanly_olt" />
+
+    <fragment
+        android:id="@+id/nav_ql_onu"
+        android:name="com.example.monitordocsis.ui.quanlyonu.FragmentQuanlyOnu"
+        android:label="@string/menu_onu"
+        tools:layout="@layout/fragment_quanly_onu" />
+
+</navigation>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="42dp">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:padding="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txt_dsonu"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/custom_text_2"
+                    android:gravity="center"
+                    android:text="DS ONU"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_show_port"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/custom_text_1"
+                    android:gravity="center"
+                    android:text="Show Port"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_port"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="PortPon"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_active"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="Active"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_inactive"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="InActive"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_total_onu"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_oltid"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal"
+                    android:visibility="invisible" />
+                <TextView
+                    android:id="@+id/txt_area"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="normal"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

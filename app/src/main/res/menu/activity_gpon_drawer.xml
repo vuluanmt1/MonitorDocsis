@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Cảnh Báo Tín Hiệu">
+            <menu>
+                <item
+                    android:id="@+id/nav_canhbaoonu"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="@string/menu_canhbaoonu" />
+                <item
+                    android:id="@+id/nav_gallery"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="@string/menu_gallery" />
+                <item
+                    android:id="@+id/nav_slideshow"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="@string/menu_slideshow" />
+                <item
+                    android:id="@+id/nav_tools"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="@string/menu_tools" />
+                <item
+                    android:id="@+id/nav_test"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="@string/menu_test" />
+            </menu>
+        </item>
+    </group>
+    <item android:title="Quản Lý Hệ Thống">
+        <menu>
+            <item
+                android:id="@+id/nav_ql_olt"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_olt" />
+            <item
+                android:id="@+id/nav_ql_onu"
+                android:icon="@drawable/ic_menu_onu"
+                android:title="@string/menu_onu" />
+        </menu>
+    </item>
+
+</menu>

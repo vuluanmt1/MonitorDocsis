@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txt_ifindex"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:text="ifindex" />
+
+    <TextView
+        android:id="@+id/txt_ifalias"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toEndOf="@+id/txt_ifindex"
+        android:textColor="#000000"
+        android:text="ifalias"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/txt_ifindex" />
+
+</RelativeLayout>

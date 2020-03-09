@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="AdminState"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Status"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Auth-Type"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Username"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Password  "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" MAC Address  "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="IP Host 1"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" IP Host 2 "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Config Mask"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Config Gateway"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Config Primary DNS "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Config Secondary DNS"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text="Config Secondary DNS"
+                android:visibility="invisible"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_admin_state"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:gravity="center|left"
+                android:background="@color/colorLightGray"
+                android:text=" SNR "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Mer "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_auth_type"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Fec "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_username"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" UnFec "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_password"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Tx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_macaddress"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_ip_host1"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_ip_host2"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_config_mask"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_config_getway"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_config_primary"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/txt_config_secondary"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center|left"
+                android:text=" Rx "
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

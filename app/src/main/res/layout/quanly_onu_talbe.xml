@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:gravity="center"
+    android:layout_height="45dp">
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +13,7 @@
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,22 +22,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0">
             <LinearLayout android:orientation="horizontal"
-                android:layout_height="55dp"
+                android:layout_height="50dp"
+                android:gravity="center"
                 android:layout_width="match_parent">
-                <Button
+                <ImageView
                     android:id="@+id/spinner_tool"
-                    android:layout_width="100dp"
+                    android:layout_width="83dp"
                     android:layout_height="40dp"
-                    android:text="Tools"
-                    android:textSize="14sp"
-                    android:gravity="center|left"
-                    android:textStyle="normal"
-                    android:drawableRight="@drawable/icon_down"
-                    />
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_congcu" />
                 <TextView
                     android:id="@+id/txt_maolt"
                     android:layout_width="140dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:textColor="#000000"
                     android:background="@color/colorLightGray"
@@ -47,7 +46,7 @@
                 <TextView
                     android:id="@+id/txt_maonu"
                     android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:textColor="#000000"
                     android:background="@color/colorLightGray"
@@ -56,31 +55,20 @@
                     android:textSize="14sp"
                     android:textStyle="normal" />
                 <TextView
-                    android:id="@+id/txt_portpon"
+                    android:id="@+id/txt_address"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:gravity="center"
                     android:background="@color/colorLightGray"
                     android:textColor="#000000"
-                    android:text="Port"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/txt_onuid"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text=" ONU ID "
-                    android:textSize="14dp"
+                    android:gravity="center|left"
+                    android:text="Địa chỉ"
+                    android:textSize="12sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/txt_status"
                     android:layout_width="70dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:gravity="center"
                     android:background="@color/colorLightGray"
@@ -89,42 +77,9 @@
                     android:textSize="14sp"
                     android:textStyle="normal" />
                 <TextView
-                    android:id="@+id/txt_mode"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text="Mode"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/txt_profile"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text="Profile"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/txt_firmware"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text="Firmware"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-                <TextView
                     android:id="@+id/txt_rxpw"
                     android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:gravity="center"
                     android:background="@color/colorLightGray"
@@ -133,42 +88,20 @@
                     android:textSize="14sp"
                     android:textStyle="normal" />
                 <TextView
-                    android:id="@+id/txt_deact"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/txt_firmware"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:gravity="center"
                     android:background="@color/colorLightGray"
                     android:textColor="#000000"
-                    android:text="Deact"
-                    android:textSize="14sp"
-                    android:textStyle="normal"/>
-                <TextView
-                    android:id="@+id/txt_intime"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text="Intime"
-                    android:textSize="14sp"
-                    android:textStyle="normal"/>
-                <TextView
-                    android:id="@+id/txt_model"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="center"
-                    android:background="@color/colorLightGray"
-                    android:textColor="#000000"
-                    android:text="Model"
+                    android:text="Firmware"
                     android:textSize="14sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/txt_distance"
                     android:layout_width="115dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:gravity="center"
                     android:background="@color/colorLightGray"
@@ -179,12 +112,90 @@
                 <TextView
                     android:id="@+id/txt_time"
                     android:layout_width="150dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="3dp"
                     android:background="@color/colorLightGray"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:text="Time"
+                    android:textSize="14sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_portpon"
+                    android:layout_marginLeft="3dp"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Port"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_onuid"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text=" ONU ID "
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_mode"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Mode"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Profile"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_model"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Model"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_deact"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Deact"
+                    android:textSize="14sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_intime"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Intime"
                     android:textSize="14sp"
                     android:textStyle="normal"/>
             </LinearLayout>

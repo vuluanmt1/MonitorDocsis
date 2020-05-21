@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:text="Nội dung"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/edt_subject_email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center|left"
+        android:textColor="#000000"
+        android:hint="Chủ đề"
+        />
+    <EditText
+        android:id="@+id/edt_content_email"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center|left"
+        android:textColor="#000000"
+        android:hint="Nội dung"
+        />
+    <TextView
+        android:id="@+id/txt_send_mail"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Gửi"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="#F7F3F3"
+        android:background="@drawable/custom_text_tools"
+        />
+
+</LinearLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+            <LinearLayout android:orientation="horizontal"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_tool"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:text="Ticket"
+                    android:textColor="#F7F3F3"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textStyle="normal"
+                    android:background="@drawable/custom_text_tools"/>
+                <TextView
+                    android:id="@+id/txt_leve"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="Cấp độ"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_time_start_ticket"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="Thời điểm sự cố"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_chinhanh"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Chi nhánh"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_nguyennhan"
+                    android:layout_marginLeft="3dp"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Nguyên nhân"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_maolt"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Tên OLT"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_port_pon"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="PortPon"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_onu_act"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="ONU Active"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_onu_inact"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="ONU Inactive"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_total_onu"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:text="Tổng ONU"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_percent_onu_inact"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Tỷ lệ % Inactive"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_Avg_rxpower"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Avg Rx ONU Active"
+                    android:textSize="14dp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_node_quang"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="Node quang ảnh hưởng"
+                    android:textSize="14dp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_maticket"
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:visibility="invisible"
+                    android:text="Mã Ticket"
+                    android:textSize="14dp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_area"
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:visibility="invisible"
+                    android:text="Area"
+                    android:textSize="14dp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/txt_province"
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:visibility="invisible"
+                    android:text="Province"
+                    android:textSize="14dp"
+                    android:textStyle="normal"/>
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

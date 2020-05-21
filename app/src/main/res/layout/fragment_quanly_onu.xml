@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="false"
-        android:indeterminateTint="#F39C2D"
+        android:indeterminateTint="#2264cf"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="@+id/scrollView"
         app:layout_constraintStart_toStartOf="@+id/scrollView"
@@ -28,7 +28,6 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -44,39 +43,37 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginEnd="5dp"
                     android:orientation="vertical">
-                    <TextView
+                    <ImageView
                         android:id="@+id/txt_search"
-                        android:layout_width="220dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Tìm Kiếm ONU"
-                        android:gravity="center"
-                        android:background="@drawable/custom_text"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16dp"
-                        android:textStyle="bold"
-                        tools:ignore="MissingConstraints" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/btn_gpon"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:scaleType="fitCenter"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/button_tim_onu" />
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/layout_search"
-                    android:layout_width="470dp"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/custom_layout"
                     android:orientation="vertical">
                     <LinearLayout
-                        android:layout_width="470dp"
+                        android:layout_width="400dp"
                         android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center|left"
@@ -110,7 +107,7 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="470dp"
+                        android:layout_width="400dp"
                         android:layout_height="30dp"
                         android:orientation="horizontal">
                         <Switch
@@ -132,15 +129,16 @@
                             android:text="" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="470dp"
-                        android:layout_height="60dp"
+                        android:layout_width="400dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="15dp"
+                        android:padding="5dp"
                         android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
                         <Spinner
                             android:id="@+id/cb_khuvuc"
-                            android:layout_width="150dp"
-                            android:layout_height="40dp"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
                             android:layout_marginLeft="3dp"
                             android:spinnerMode="dropdown"
                             android:gravity="center|left"
@@ -148,8 +146,8 @@
                         <EditText
                             android:id="@+id/edt_search_snonu"
                             android:layout_width="200dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="10dp"
                             android:gravity="center"
                             android:inputType="text"
                             android:hint="Nhập mã ONU"
@@ -157,18 +155,22 @@
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="120dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="90dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:orientation="horizontal">
-                        <Button
-                            android:id="@+id/btn_search"
-                            android:layout_width="150dp"
-                            android:layout_height="40dp"
-                            android:drawableLeft="@android:drawable/ic_menu_search"
+                        <ImageView
+                            android:id="@+id/txt_search_onu"
+                            android:layout_width="200dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
-                            android:text="Search" />
+                            android:contentDescription="@string/btn_gpon"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scaleType="fitCenter"
+                            android:visibility="visible"
+                            app:srcCompat="@drawable/button_timkiem" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -179,15 +181,16 @@
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_width="match_parent">
                         <TextView
-                            android:layout_width="102dp"
+                            android:layout_width="83dp"
                             android:layout_height="40dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
                             android:text=" Tool "
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_maolt"
@@ -195,10 +198,10 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
                             android:text="Mã OLT"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_maonu"
@@ -206,32 +209,21 @@
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:layout_marginLeft="3dp"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
                             android:text="Mã ONU"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/txt_portpon"
-                            android:layout_marginLeft="3dp"
-                            android:layout_width="50dp"
-                            android:layout_height="40dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Port"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_onuid"
-                            android:layout_width="50dp"
+                            android:id="@+id/txt_address"
+                            android:layout_width="350dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="ONU ID"
-                            android:textSize="14dp"
+                            android:text="Địa chỉ"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_status"
@@ -239,43 +231,10 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
                             android:text="Status"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_mode"
-                            android:layout_width="70dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Mode"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_profile"
-                            android:layout_width="100dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Profile"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_firmware"
-                            android:layout_width="100dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:text="Firmware"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_rxpw"
@@ -283,43 +242,21 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
                             android:text="RxPw"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/txt_deact"
-                            android:layout_width="120dp"
+                            android:id="@+id/txt_firmware"
+                            android:layout_width="100dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Deactive Reason"
-                            android:textSize="14dp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/txt_intime"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
-                            android:text="Inactive Time"
-                            android:textSize="14dp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/txt_model"
-                            android:layout_width="70dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
-                            android:text="Model"
-                            android:textSize="14dp"
+                            android:textColor="#FFFFFF"
+                            android:text="Firmware"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_distance"
@@ -327,10 +264,10 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
                             android:text="Khoảng cách (m)"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/txt_time"
@@ -338,10 +275,88 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
                             android:text="Time"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/txt_portpon"
+                            android:layout_marginLeft="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
+                            android:text="Port"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_onuid"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
+                            android:text="ONU ID"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_mode"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
+                            android:text="Mode"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_profile"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
+                            android:text="Profile"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_model"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
+                            android:text="Model"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_deact"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FFFFFF"
+                            android:text="Nguyên nhân"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/txt_intime"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/colorDarkBlue"
+                            android:text="Khoảng thời gian mất"
+                            android:textSize="14sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -352,6 +367,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recView"
                         android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                     </androidx.recyclerview.widget.RecyclerView>
@@ -359,5 +375,40 @@
             </LinearLayout>
         </HorizontalScrollView>
     </ScrollView>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text="Số lượng :"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_total_onu"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/colorLightGray"
+                android:gravity="left"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

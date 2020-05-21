@@ -1,4 +1,4 @@
-package com.example.monitordocsis.ui.home;
+package com.example.monitordocsis.ui.canhbaoonu;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -81,11 +81,11 @@ public class CanhbaoOnuFragment extends Fragment {
                         }
                         listAdapter.addData(listModel);
                     }catch (Exception err){
-                        alert_display("Cảnh báo", "Không thể lấy thông tin 2!\n"+ err.getMessage( ));
+                        alert_display("Cảnh báo", "Không thể lấy thông tin !\n"+ err.getMessage( ));
                             Log.d("err",">>>>"+err);
                     }
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin 3!\n"+ err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin !\n"+ err.getMessage( ));
                 }
             }
         }, new Response.ErrorListener() {

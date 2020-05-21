@@ -447,9 +447,6 @@ public class UpstreamHisActivity extends AppCompatActivity {
         edt_max_tx.setImeOptions(EditorInfo.IME_ACTION_DONE);
         edt_min_rx.setImeOptions(EditorInfo.IME_ACTION_DONE);
         edt_max_rx.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-
-
     }
     private void sortListIncrease (){
         Collections.sort(mList, new Comparator<upstreamHisModel>() {

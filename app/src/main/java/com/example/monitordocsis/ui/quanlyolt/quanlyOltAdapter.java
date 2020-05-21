@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,14 +55,15 @@ public class quanlyOltAdapter extends RecyclerView.Adapter<quanlyOltAdapter.View
                 FragmentListOnuPort frListOnu = new FragmentListOnuPort();
                 FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.remove(new FragmentQuanlyOLT());
                 transaction.replace(R.id.fr_quanly_olt,frListOnu ,frListOnu.getTag());
+                transaction.addToBackStack(null);
                 Bundle bundle = new Bundle();
                 bundle.putString("khuvuc",area);
                 bundle.putString("maolt",maolt);
                 bundle.putString("portpon", portpon);
                 frListOnu.setArguments(bundle);
                 transaction.commit();
+                ((AppCompatActivity)mContext).getSupportActionBar().setTitle("Danh sách ONU");
 
             }
         });
@@ -75,14 +77,15 @@ public class quanlyOltAdapter extends RecyclerView.Adapter<quanlyOltAdapter.View
                 FragmentShowPortOnu frShowPortOnu = new FragmentShowPortOnu();
                 FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.remove(new FragmentQuanlyOLT());
                 transaction.replace(R.id.fr_quanly_olt,frShowPortOnu ,frShowPortOnu.getTag());
+                transaction.addToBackStack(null);
                 Bundle bundle = new Bundle();
                 bundle.putString("khuvuc",area);
                 bundle.putString("maolt",maolt);
                 bundle.putString("portpon", portpon);
                 frShowPortOnu.setArguments(bundle);
                 transaction.commit();
+                ((AppCompatActivity)mContext).getSupportActionBar().setTitle("Show Port ONU");
             }
         });
         holder.portPon.setText(item.getPortPon());
@@ -100,8 +103,8 @@ public class quanlyOltAdapter extends RecyclerView.Adapter<quanlyOltAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView txt_ds_onu;
-        private TextView txt_show_port;
+        private ImageView txt_ds_onu;
+        private ImageView txt_show_port;
         private TextView portPon;
         private TextView onuAct;
         private TextView onuInAct;
@@ -118,7 +121,6 @@ public class quanlyOltAdapter extends RecyclerView.Adapter<quanlyOltAdapter.View
             onuTotal = itemView.findViewById(R.id.txt_total_onu);
             nameOLT = itemView.findViewById(R.id.txt_oltid);
             area = itemView.findViewById(R.id.txt_area);
-
         }
     }
 }

@@ -6,22 +6,22 @@
     <TextView
         android:id="@+id/txt_ifindex"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
+        android:layout_height="20dp"
+        android:textSize="12sp"
         android:visibility="gone"
         android:text="ifindex" />
 
     <TextView
         android:id="@+id/txt_ifalias"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="20dp"
         android:layout_toEndOf="@+id/txt_ifindex"
         android:textColor="#000000"
         android:text="ifalias"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:gravity="left"
         android:layout_marginLeft="5dp"
-        android:gravity="center"
         android:layout_toRightOf="@+id/txt_ifindex" />
 
 </RelativeLayout>

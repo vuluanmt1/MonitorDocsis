@@ -1,5 +1,6 @@
 package com.example.monitordocsis.ui.quanlyolt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -24,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.monitordocsis.Global;
+import com.example.monitordocsis.MainActivity;
 import com.example.monitordocsis.R;
 import com.example.monitordocsis.khuvuc.areaAdapter;
 import com.example.monitordocsis.khuvuc.areaModel;
@@ -32,16 +35,19 @@ import com.example.monitordocsis.olt.oltModel;
 import com.example.monitordocsis.permissionUser;
 import com.example.monitordocsis.province.provinceAdapter;
 import com.example.monitordocsis.province.provinceModel;
+import com.example.monitordocsis.url.urlData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class FragmentQuanlyOLT extends Fragment {
-    public static final String URL_BASE_AREA = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_area.php";
-    public static final String URL_BASE_OLT = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_olt.php";
+//    public static final String URL_BASE_AREA = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_area.php";
+//    public static final String URL_BASE_OLT = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_olt.php";
     private LinearLayout layoutSearch;
     private RecyclerView recView;
     private ProgressBar progBar;
@@ -60,8 +66,11 @@ public class FragmentQuanlyOLT extends Fragment {
     private oltAdapter mOltAdapter;
     private Spinner spinnerArea, spinnerProvince, spinnerOlt;
     private String donVi;
+    private String version;
+    private String usercode;
     private Button btn_search ;
-    private TextView txt_search;
+    private TextView txt_total_port, txt_onu_active,txt_onu_inactive, txt_onu_total, txt_port_olt;
+    private ImageView txt_search,txt_search_onu;
     View root;
     private String codeArea;
     private String codeProvince;
@@ -70,8 +79,18 @@ public class FragmentQuanlyOLT extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         permissionUser user = (permissionUser) getContext().getApplicationContext();
         donVi = user.getUnit();
-        loadArea(URL_BASE_AREA);
+        usercode = user.getEmail();
+        version =user.getVersion();
+        final String url_base_area = urlData.url+version+"/api_load_area.php";
+        final String url_base_olt =urlData.url+version+"/api_load_olt.php";
+        if(usercode.isEmpty()){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+        loadArea(url_base_area);
         root = inflater.inflate(R.layout.fragment_quanly_olt, container, false);
+        recView = (RecyclerView)root.findViewById(R.id.recView);
+        txt_total_port= root.findViewById(R.id.txt_total_port);
         layoutSearch =root.findViewById(R.id.layout_search);
         layoutSearch.setVisibility(View.VISIBLE);
         progBar = root.findViewById(R.id.progBar);
@@ -80,7 +99,8 @@ public class FragmentQuanlyOLT extends Fragment {
         spinnerProvince = root.findViewById(R.id.cb_province);
         spinnerOlt = root.findViewById(R.id.cb_olt);
         btn_search =root.findViewById(R.id.btn_search);
-        txt_search = root.findViewById(R.id.txt_search);
+        txt_search =root.findViewById(R.id.txt_search);
+        txt_search_onu = root.findViewById(R.id.txt_search_onu);
         txt_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +117,7 @@ public class FragmentQuanlyOLT extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     areaModel item = (areaModel) mAreaAdapter.getItem(position);
                     codeArea = item.getCodeArea();
-                    loadProvince(URL_BASE_AREA,codeArea);
+                    loadProvince(url_base_area,codeArea);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -109,7 +129,7 @@ public class FragmentQuanlyOLT extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 provinceModel provinceItem = (provinceModel) mProvinceAdapter.getItem(position);
                 codeProvince = provinceItem.getProvince();
-                loadOlt(URL_BASE_AREA,codeProvince);
+                loadOlt(url_base_area,codeProvince);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -127,10 +147,11 @@ public class FragmentQuanlyOLT extends Fragment {
 
             }
         });
-        btn_search.setOnClickListener(new View.OnClickListener() {
+        txt_search_onu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Global.animator_button(v);
+                recView.setVisibility(View.GONE);
                 progBar.setVisibility(View.VISIBLE);
                 if(layoutSearch.getVisibility()==View.VISIBLE){
                     layoutSearch.setVisibility(View.GONE);
@@ -152,14 +173,15 @@ public class FragmentQuanlyOLT extends Fragment {
                     json_search_olt.put("data",json_arr_data);
                 }
                 catch (JSONException err) {
-                    alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                 }
                 Log.d("json_search_olt",">>>"+json_search_olt);
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_BASE_OLT, json_search_olt, new Response.Listener<JSONObject>() {
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url_base_olt, json_search_olt, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             json_arr_result = response.getJSONArray("data");
+                            txt_total_port.setText(response.getString("recordsTotal"));
                             mList = new ArrayList<quanlyOltModel>();
                             for(int i=0; i < json_arr_result.length(); i++){
                                 json_obj =json_arr_result.getJSONObject(i);
@@ -167,27 +189,89 @@ public class FragmentQuanlyOLT extends Fragment {
                                         json_obj.getString("INACTONU"),json_obj.getString("TOTALONU"),
                                         json_obj.getString("SNOLT"),json_obj.getString("AREA")));
                             }
-                            recView = (RecyclerView)root.findViewById(R.id.recView);
+                            recView.setVisibility(View.VISIBLE);
                             progBar = root.findViewById(R.id.progBar);
                             mAdapter = new quanlyOltAdapter(getContext(),mList);
                             recView.setLayoutManager(new LinearLayoutManager(getActivity()));
                             recView.setAdapter(mAdapter);
                             progBar.setVisibility(View.GONE);
                         }catch (Exception err){
-                            alert_display("Cảnh báo", "Không thể lấy thông tin 2!\n"+ err.getMessage( ));
+                            alert_display("Cảnh báo", "Không thể lấy thông tin");
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                        alert_display("Cảnh báo", "Không thể lấy thông tin");
                     }
                 });
                 Volley.newRequestQueue(getActivity()).add(request);
             }
         });
+        txt_onu_active =root.findViewById(R.id.txt_active);
+        txt_onu_active.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                if(check == true){
+                    sortListReductionONUAct();
+                    check=false;
+                }else{
+                    sortListIncreaseONUAct();
+                    check=true;
+                }
+            }
+        });
+        txt_onu_inactive =root.findViewById(R.id.txt_inactive);
+        txt_onu_inactive.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                if(check == true){
+                    sortListReductionONUInAct();
+                    check=false;
+                }else{
+                    sortListIncreaseONUInAct();
+                    check=true;
+                }
+            }
+        });
+        txt_onu_total =root.findViewById(R.id.txt_total_onu);
+        txt_onu_total.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                if(check == true){
+                    sortListReductionTotalONU();
+                    check=false;
+                }else{
+                    sortListIncreaseTotalONU();
+                    check=true;
+                }
+            }
+        });
+        txt_port_olt =root.findViewById(R.id.txt_portpon);
+        txt_port_olt.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                System.out.println("aaaaaaaaaaaaa");
+                if(check == true){
+                    sortListReductionPortOLT();
+                    check=false;
+                }else{
+                    sortListIncreasePortOLT();
+                    check=true;
+                }
+            }
+        });
         return root;
     }
+
     private void loadArea(String url){
         final JSONObject json_search1 = new JSONObject( );
         try {
@@ -206,6 +290,7 @@ public class FragmentQuanlyOLT extends Fragment {
             public void onResponse(JSONObject response) {
                 try {
                     json_arr_area =response.getJSONArray("data");
+
                     mListArea = new ArrayList<areaModel>();
                     for(int i=0; i < json_arr_area.length(); i++){
                         json_obj =json_arr_area.getJSONObject(i);
@@ -220,13 +305,13 @@ public class FragmentQuanlyOLT extends Fragment {
                     mAreaAdapter = new areaAdapter(getActivity(),mListArea);
                     spinnerArea.setAdapter(mAreaAdapter);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin onResponse!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);
@@ -261,13 +346,13 @@ public class FragmentQuanlyOLT extends Fragment {
                     mProvinceAdapter = new provinceAdapter(getActivity(),mListProvince);
                     spinnerProvince.setAdapter(mProvinceAdapter);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin onResponse!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);
@@ -286,7 +371,7 @@ public class FragmentQuanlyOLT extends Fragment {
             json_search1.put("data",json_arr_data);
         }
         catch (JSONException err) {
-            alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+            alert_display("Cảnh báo", "Không thể lấy thông tin ");
         }
         Log.d("json_olt",">>>"+json_search1);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, json_search1, new Response.Listener<JSONObject>() {
@@ -302,13 +387,13 @@ public class FragmentQuanlyOLT extends Fragment {
                     mOltAdapter = new oltAdapter(getActivity(),mListOlt);
                     spinnerOlt.setAdapter(mOltAdapter);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin onResponse!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);
@@ -319,5 +404,81 @@ public class FragmentQuanlyOLT extends Fragment {
                 .setMessage(content)
                 .setPositiveButton("Đồng ý", null)
                 .show( );
+    }
+    //Sắp xếp theo ONU Active.
+    private void sortListIncreaseONUAct(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o1.getOnuActive()).compareTo(Integer.valueOf(o2.getOnuActive()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    private void sortListReductionONUAct(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o2.getOnuActive()).compareTo(Integer.valueOf(o1.getOnuActive()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    //Sắp xếp theo ONU INActive.
+    private void sortListIncreaseONUInAct(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o1.getOnuInActive()).compareTo(Integer.valueOf(o2.getOnuInActive()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    private void sortListReductionONUInAct(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o2.getOnuInActive()).compareTo(Integer.valueOf(o1.getOnuInActive()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    //Sắp xếp theo Tổng ONU .
+    private void sortListIncreaseTotalONU(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o1.getOnuTotal()).compareTo(Integer.valueOf(o2.getOnuTotal()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    private void sortListReductionTotalONU(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return Integer.valueOf(o2.getOnuTotal()).compareTo(Integer.valueOf(o1.getOnuTotal()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    //Sắp xếp theo Port OLT .
+    private void sortListIncreasePortOLT(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return o1.getPortPon().compareTo(o2.getPortPon());
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    private void sortListReductionPortOLT(){
+        Collections.sort(mList, new Comparator<quanlyOltModel>() {
+            @Override
+            public int compare(quanlyOltModel o1, quanlyOltModel o2) {
+                return o2.getPortPon().compareTo(o1.getPortPon());
+            }
+        });
+        mAdapter.notifyDataSetChanged();
     }
 }

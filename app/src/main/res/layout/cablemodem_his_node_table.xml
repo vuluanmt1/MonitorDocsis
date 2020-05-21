@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_mac"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="#000000"
+                    android:text=" Mac "
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="300dp"
+                    android:layout_height="30dp"
+                    android:text=" Address "
+                    android:background="@color/colorLightGray"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_status"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:text=" Status "
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_snr"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text=" SNR "
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_mer"
+                    android:layout_width="50dp"
+                    android:gravity="center"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text=" MER  "
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_fec"
+                    android:layout_width="50dp"
+                    android:gravity="center"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Fec"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_unfec"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="UnFec"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_txpw"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="TxPw"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_rxpw"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="RxPw"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="120dp"
+                    android:gravity="center"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="time"
+                    android:textSize="12sp"
+                    android:textStyle="normal"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

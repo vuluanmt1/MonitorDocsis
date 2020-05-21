@@ -2,7 +2,7 @@ package com.example.monitordocsis;
 
 import android.app.Application;
 
-public class permissionUser extends Application {
+public  class permissionUser extends Application {
     private  String userGroup;
     private String unit;
     private String position;
@@ -10,6 +10,36 @@ public class permissionUser extends Application {
     private String privilege;
     private String area;
     private String branch;
+    private String email;
+    private String systemGpon;
+    private String systemDocsis;
+    private  String version;
+    private  String version_docsis_mb;
+    private  String version_docsis_mn;
+
+    public String getSystemGpon() {
+        return systemGpon;
+    }
+
+    public void setSystemGpon(String systemGpon) {
+        this.systemGpon = systemGpon;
+    }
+
+    public String getSystemDocsis() {
+        return systemDocsis;
+    }
+
+    public void setSystemDocsis(String systemDocsis) {
+        this.systemDocsis = systemDocsis;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getUserGroup() {
         return userGroup;
@@ -65,6 +95,27 @@ public class permissionUser extends Application {
         this.branch = branch;
     }
 
+    public String getVersion() {
+        return version;
+    }
 
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
+    public String getVersion_docsis_mb() {
+        return version_docsis_mb;
+    }
+
+    public void setVersion_docsis_mb(String version_docsis_mb) {
+        this.version_docsis_mb = version_docsis_mb;
+    }
+
+    public String getVersion_docsis_mn() {
+        return version_docsis_mn;
+    }
+
+    public void setVersion_docsis_mn(String version_docsis_mn) {
+        this.version_docsis_mn = version_docsis_mn;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.monitordocsis;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,6 +24,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,16 +41,22 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private EditText txt_username;
     private EditText txt_password;
-    private TextView txt_welcome;
     private CheckBox cb_remember_login;
-    private Button btn_login;
+    private ImageView btn_login;
     private Button btn_logout;
     private Boolean login;
     private JSONArray json_arr_result;
     private JSONObject json_obj;
-//    public static final String URL_BASE = "http://10.103.25.62/dev/generalmanagementsystem/api/android/index.php";
+//    public static final String URL_BASE = "http://10.0.2.2/dev/generalmanagementsystem/api/android/index.php";
+//    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/index_1.php";
     public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/index.php";
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
+    private static final int REQ_CODE_VERSION_UPDATE = 530;
+    private AppUpdateManager appUpdateManager;
+    private InstallStateUpdatedListener installStateUpdatedListener;
+    private CoordinatorLayout drawerLayout;
+
+    //    SharedPreferences sharedPreferences;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txt_username =findViewById(R.id.txt_email);
         txt_password =findViewById(R.id.txt_password);
-        txt_welcome = findViewById(R.id.txt_welcome);
         btn_login =findViewById(R.id.btn_login);
         cb_remember_login = findViewById(R.id.cb_remember);
         sharedPreferences = getSharedPreferences("INFO", Context.MODE_PRIVATE);
@@ -54,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         txt_username.setText(sharedPreferences.getString("user_name",""));
         txt_password.setText(sharedPreferences.getString("password",""));
         cb_remember_login.setChecked(sharedPreferences.getBoolean("checked",false));
+        checkForAppUpdate();
     }
     @Override
     protected void onStart() {
@@ -80,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             json_req.put("data", json_data);
                         }
                         catch (JSONException err) {
-                            alert_display("Cảnh báo", "Không thể lấy thông tin!\n1. " + err.getMessage( ));
+                            alert_display("Cảnh báo", "Không thể lấy thông tin");
                         }
                         Log.d("json_req",">>"+json_req);
                         //Truyền thông tin qua volley và nhận về kết quả
@@ -103,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
                                                     permission.setPrivilege(json_obj.getString("PRIVILEGE"));
                                                     permission.setArea(json_obj.getString("AREA"));
                                                     permission.setBranch(json_obj.getString("BRANCH"));
+                                                    permission.setSystemGpon(json_obj.getString("SYSTEM_G"));
+                                                    permission.setSystemDocsis(json_obj.getString("SYSTEM_DOCSIS"));
+                                                    permission.setEmail(json_obj.getString("MAIL"));
+                                                    permission.setVersion(json_obj.getString("VERSION"));
+                                                    permission.setVersion_docsis_mb(json_obj.getString("VERSION_DOCSIS_MB"));
+                                                    permission.setVersion_docsis_mn(json_obj.getString("VERSION_DOCSIS_MN"));
                                                 }
                                                 if(cb_remember_login.isChecked()){
                                                     editor.putBoolean("login", true);
@@ -128,13 +152,13 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
                                         catch (JSONException err) {
-                                            alert_display("Cảnh báo", "Không thể lấy thông tin!\n" + err.getMessage( ));
+                                            alert_display("Cảnh báo", "Không thể lấy thông tin");
                                         }
                                     }
                                 }, new Response.ErrorListener( ) {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        alert_display("Cảnh báo", "Không thể lấy thông tin!\n" + error.getMessage( ));
+                                        alert_display("Cảnh báo", "Không thể lấy thông tin");
                                     }
                                 });
                         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
@@ -146,6 +170,118 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+
+            case REQ_CODE_VERSION_UPDATE:
+                if (resultCode != RESULT_OK) { //RESULT_OK / RESULT_CANCELED / RESULT_IN_APP_UPDATE_FAILED
+                    Log.d("Update flow failed!",">>" + resultCode);
+                    // If the update is cancelled or fails,
+                    // you can request to start the update again.
+                    unregisterInstallStateUpdListener();
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterInstallStateUpdListener();
+        super.onDestroy();
+    }
+
+    private void checkForAppUpdate(){
+        // Creates instance of the manager.
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        // Returns an intent object that you use to check for an update.
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        installStateUpdatedListener = new InstallStateUpdatedListener() {
+            @Override
+            public void onStateUpdate(InstallState installState) {
+                // Show module progress, log state, or install the update.
+                if (installState.installStatus() == InstallStatus.DOWNLOADED){
+                    // After the update is downloaded, show a notification
+                    // and request user confirmation to restart the app.
+                    popupSnackbarForCompleteUpdateAndUnregister();
+                }
+            }
+        };
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo ->{
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                // Request the update.
+                if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+
+                    // Before starting an update, register a listener for updates.
+                    appUpdateManager.registerListener(installStateUpdatedListener);
+                    // Start an update.
+                    startAppUpdateFlexible(appUpdateInfo);
+                } else if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE) ) {
+                    // Start an update.
+                    startAppUpdateImmediate(appUpdateInfo);
+                }
+            }
+        });
+    }
+    private void startAppUpdateImmediate(AppUpdateInfo appUpdateInfo) {
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.IMMEDIATE,
+                    // The current activity making the update request.
+                    this,
+                    // Include a request code to later monitor this update request.
+                    MainActivity.REQ_CODE_VERSION_UPDATE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void startAppUpdateFlexible(AppUpdateInfo appUpdateInfo) {
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.FLEXIBLE,
+                    // The current activity making the update request.
+                    this,
+                    // Include a request code to later monitor this update request.
+                    MainActivity.REQ_CODE_VERSION_UPDATE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+            unregisterInstallStateUpdListener();
+        }
+    }
+    private void checkNewAppVersionState() {
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+                            //FLEXIBLE:
+                            // If the update is downloaded but not installed,
+                            // notify the user to complete the update.
+                            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                                popupSnackbarForCompleteUpdateAndUnregister();
+                            }
+
+                            //IMMEDIATE:
+                            if (appUpdateInfo.updateAvailability()
+                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                // If an in-app update is already running, resume the update.
+                                startAppUpdateImmediate(appUpdateInfo);
+                            }
+                        });
+
+    }
+    private void popupSnackbarForCompleteUpdateAndUnregister(){
+
+    }
+    private void unregisterInstallStateUpdListener() {
+        if (appUpdateManager != null && installStateUpdatedListener != null)
+            appUpdateManager.unregisterListener(installStateUpdatedListener);
+    }
+
     public void alert_display(String title, String content) {
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle(title)
@@ -156,13 +292,11 @@ public class MainActivity extends AppCompatActivity {
     private void afterLogin() {
         txt_username.setVisibility(View.GONE);
         txt_password.setVisibility(View.GONE);
-        txt_welcome.setVisibility(View.VISIBLE);
     }
 
     private void afterLogout() {
         txt_username.setVisibility(View.VISIBLE);
         txt_password.setVisibility(View.VISIBLE);
-        txt_welcome.setVisibility(View.GONE);
     }
 
 }

@@ -4,87 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".DashboardActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0B3642"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
+                android:orientation="vertical">
+                <ImageView
                     android:id="@+id/btn_docsis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/btn_dialogs"
+                    android:contentDescription="@string/btn_docsis"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:visibility="visible"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/btn_3000" />
-
-                <ImageButton
+                    app:srcCompat="@drawable/button_docsis" />
+                <ImageView
                     android:id="@+id/btn_gpon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/btn_name"
+                    android:contentDescription="@string/btn_gpon"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:visibility="visible"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/btn_name" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btn_docsis_maping"
+                    app:srcCompat="@drawable/button_gpon" />
+                <ImageView
+                    android:id="@+id/btn_map_docsis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/btn_word"
+                    android:contentDescription="@string/btn_docsis"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:visibility="visible"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/btn_words" />
-
-                <ImageButton
-                    android:id="@+id/btn_gpon_maping"
+                    app:srcCompat="@drawable/button_bando_docsis" />
+                <ImageView
+                    android:id="@+id/btn_map_optical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/btn_byword"
+                    android:contentDescription="@string/btn_docsis"
                     android:paddingLeft="10dp"
-                    android:paddingEnd="10dp"
                     android:paddingRight="10dp"
+                    android:visibility="visible"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/btn_bywords" />
+                    app:srcCompat="@drawable/button_bando_quang" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

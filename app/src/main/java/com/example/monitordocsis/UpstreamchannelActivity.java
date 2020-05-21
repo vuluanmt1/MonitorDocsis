@@ -230,7 +230,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                                             json_obj.getString("AVGONLINECMMICREF"),json_obj.getString("UPCHANNELFREQUENCY"),
                                             json_obj.getString("UPCHANNELWIDTH"),json_obj.getString("TITLE"),json_obj.getString("MODIFIEDDATE"),json_obj.getString("CMTSID"),json_obj.getString("IFINDEX")));
                                 }
-
                                 upsAdapter = new upstreamchannelAdapter(upsModel,UpstreamchannelActivity.this);
                                 Display display = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
                                 LinearLayoutManager linearLayoutManager =new LinearLayoutManager(UpstreamchannelActivity.this);
@@ -238,7 +237,6 @@ public class UpstreamchannelActivity extends AppCompatActivity implements Adapte
                                 recView.setLayoutManager(linearLayoutManager);
                                 recView.setHasFixedSize(true);
                                 progBar.setVisibility(View.GONE);
-
                             }catch (Exception er){
                                 alert_display("Cảnh báo", "Không thể lấy thông tin từ JsonObjectRequest!\n1. " + er.getMessage( ));
                             }

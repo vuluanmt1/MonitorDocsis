@@ -8,98 +8,116 @@
     tools:context=".MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                app:srcCompat="@drawable/logovtvcab" />
-
-            <TextView
-                android:id="@+id/txt_welcome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/txt_welcome"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#D803A9F4"
-                android:textColorHint="#B0FFFFFF"
-                android:textColorLink="#FFFFFF"
-                android:textSize="18sp" />
-
+                android:layout_height="250dp"
+                android:padding="2dp"
+                app:srcCompat="@drawable/logo_monitor_app" />
             <EditText
                 android:id="@+id/txt_email"
+                style="@android:style/Widget.Holo.Light.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="#1f58b3"
                 android:ems="10"
                 android:hint="@string/txt_email"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FFFFFF"
+                android:textColor="#1f58b3"
                 android:textColorHighlight="#D803A9F4"
-                android:textColorHint="#B0FFFFFF"
-                android:textColorLink="#FFFFFF" />
-
+                android:textColorHint="#0c7dbe"
+                android:textColorLink="#161515"
+                android:textStyle="normal" />
             <EditText
                 android:id="@+id/txt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="#1f58b3"
                 android:ems="10"
                 android:hint="@string/txt_password"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#D803A9F4"
-                android:textColorHint="#B0FFFFFF"
-                android:textColorLink="#FFFFFF" />
+                android:textColor="#1f58b3"
+                android:textColorHighlight="#2673ef"
+                android:textColorHint="#0c7dbe"
+                android:textColorLink="#2196F3"
+                android:textStyle="normal" />
             <CheckBox
                 android:id="@+id/cb_remember"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#FFFFFF"
-                android:text="Nhớ tài khoản đăng nhập">
-
+                android:buttonTint="@color/colorDarkBlue"
+                android:text="Nhớ tài khoản đăng nhập"
+                android:textColor="#1f58b3"
+                android:textColorLink="#1F58B3"
+                android:textStyle="normal">
             </CheckBox>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
-                <Button
+                <ImageView
                     android:id="@+id/btn_login"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="200dp"
-                    android:layout_marginLeft="100dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#03A9F4"
-                    android:padding="10dp"
-                    android:text="@string/btn_login" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_docsis"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_dangnhap_min" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:gravity="center"
+        android:text="@string/copyright"
+        android:textColor="#1f58b3"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

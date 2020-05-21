@@ -20,12 +20,12 @@ public class firmwareAdapter extends ArrayAdapter {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getView(position, convertView, parent);
+        return intview(position, convertView, parent);
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getDropDownView(position, convertView, parent);
+        return intview(position, convertView, parent);
     }
     private View intview(int position, View convertView, ViewGroup parent){
         if(convertView ==null){

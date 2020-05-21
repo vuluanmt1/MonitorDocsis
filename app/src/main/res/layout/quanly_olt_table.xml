@@ -27,27 +27,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:orientation="horizontal">
-                <TextView
+                <ImageView
                     android:id="@+id/txt_dsonu"
                     android:layout_width="60dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/custom_text_2"
-                    android:gravity="center"
-                    android:text="DS ONU"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="normal" />
-                <TextView
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_ds_onu" />
+                <ImageView
                     android:id="@+id/txt_show_port"
-                    android:layout_width="90dp"
+                    android:layout_width="60dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/custom_text_1"
-                    android:gravity="center"
-                    android:text="Show Port"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="normal" />
-
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_show_port" />
                 <TextView
                     android:id="@+id/txt_port"
                     android:layout_width="70dp"

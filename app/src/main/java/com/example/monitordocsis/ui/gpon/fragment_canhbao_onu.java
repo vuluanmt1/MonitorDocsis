@@ -1,5 +1,6 @@
 package com.example.monitordocsis.ui.gpon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,8 +29,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.monitordocsis.Global;
+import com.example.monitordocsis.MainActivity;
 import com.example.monitordocsis.R;
 import com.example.monitordocsis.permissionUser;
+import com.example.monitordocsis.url.urlData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,20 +49,21 @@ public class fragment_canhbao_onu extends Fragment  {
     private ProgressBar progBar;
     private canhbao_onu_adapter adapter;
     private List<canhbao_onu_model> canhbao_onu_models;
-    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_canhbaoonu.php";
+//    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_canhbaoonu.php";
     private JSONArray json_arr_result;
     private JSONObject json_obj;
     private fragment_canhbao_onu f_canhbao;
     private String donVi;
     private String branch;
+    private String usercode;
+    private String version;
     private TextView txt_maolt, txt_maonu, txt_port,txt_onuid, txt_mode,
-            txt_profile,txt_firmware, txt_rx, txt_deactive, txt_inactive, txt_model;
+            txt_profile,txt_firmware, txt_rx, txt_deactive, txt_inactive, txt_model , txt_total_onu,txt_address;
     Spinner dynamicSpinner;
     public  static fragment_canhbao_onu newIntance(){
         fragment_canhbao_onu item = new fragment_canhbao_onu();
         return item;
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +75,17 @@ public class fragment_canhbao_onu extends Fragment  {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_canhbaoonu,container,false);
+        txt_total_onu = view.findViewById(R.id.txt_total_onu);
         permissionUser user = (permissionUser) getContext().getApplicationContext();
         donVi = user.getUnit();
         branch =user.getBranch();
+        usercode = user.getEmail();
+        version =user.getVersion();
+        String url = urlData.url+version+"/api_canhbaoonu.php";
+        if(usercode.isEmpty()){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
         final JSONObject json_req = new JSONObject( );
         try {
             JSONObject json_data_item = new JSONObject( );
@@ -88,15 +100,17 @@ public class fragment_canhbao_onu extends Fragment  {
             json_req.put("data", json_data);
         }
         catch (JSONException err) {
-            Log.d("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+            Log.d("Cảnh báo", "Không thể lấy thông tin ");
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_BASE, json_req, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, json_req, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     json_arr_result = response.getJSONArray("data");
+                    txt_total_onu.setText(response.getString("recordsTotal"));
                     try {
                         canhbao_onu_models = new ArrayList<canhbao_onu_model>();
+
                         for(int i=0; i < json_arr_result.length(); i++){
                             json_obj =json_arr_result.getJSONObject(i);
                             canhbao_onu_models.add(new canhbao_onu_model(json_obj.getString("SNOLT"),json_obj.getString("SNONU"),
@@ -105,7 +119,7 @@ public class fragment_canhbao_onu extends Fragment  {
                                     json_obj.getString("PROFILEREG"), json_obj.getString("FIRMWARE"),
                                     json_obj.getString("RXPOWER"),json_obj.getString("DEACTIVE_REASON"),json_obj.getString("INACTIVE_TIME"),
                                     json_obj.getString("MODEL"),json_obj.getString("DISTANCE"),
-                                    json_obj.getString("CREATEDATE")));
+                                    json_obj.getString("CREATEDATE"), json_obj.getString("ADDRESS")));
                         }
                         recyclerView = (RecyclerView)view.findViewById(R.id.recView);
                         progBar = view.findViewById(R.id.progBar);
@@ -115,18 +129,17 @@ public class fragment_canhbao_onu extends Fragment  {
                         progBar.setVisibility(View.GONE);
 
                     }catch (Exception err){
-                        alert_display("Cảnh báo", "Không thể lấy thông tin 2!\n"+ err.getMessage( ));
-                        Log.d("err",">>>>"+err);
+                        alert_display("Cảnh báo", "Không thể lấy thông tin ");
                     }
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin 3!\n"+ err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                     Log.d("JsonObjectRequest",">>>>"+err);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(jsonObjectRequest);
@@ -280,6 +293,21 @@ public class fragment_canhbao_onu extends Fragment  {
                 }
             }
         });
+        txt_address =view.findViewById(R.id.txt_address);
+        txt_address.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                if(check == true){
+                    sortListReductionAddress();
+                    check=false;
+                }else{
+                    sortListIncreaseAddress();
+                    check=true;
+                }
+            }
+        });
 
         return view;
     }
@@ -310,10 +338,13 @@ public class fragment_canhbao_onu extends Fragment  {
             @Override
             public boolean onQueryTextChange(String s) {
                 adapter.getFilter().filter(s);
+                int a = adapter.getItemCount();
+                System.out.println("A:"+a);
                 return false;
             }
         });
     }
+
     // Các hàm sắp xem theo Tiêu đề Mã OLT.
     private void sortListIncreaseMaolt (){
         Collections.sort(canhbao_onu_models, new Comparator<canhbao_onu_model>() {
@@ -500,6 +531,25 @@ public class fragment_canhbao_onu extends Fragment  {
             @Override
             public int compare(canhbao_onu_model o1, canhbao_onu_model o2) {
                 return o2.getModel().compareTo(o1.getModel());
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
+    // Các hàm sắp xem theo Tiêu đề Địa chỉ.
+    private void sortListIncreaseAddress(){
+        Collections.sort(canhbao_onu_models, new Comparator<canhbao_onu_model>() {
+            @Override
+            public int compare(canhbao_onu_model o1, canhbao_onu_model o2) {
+                return o1.getAddress().compareTo(o2.getAddress());
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
+    private void sortListReductionAddress(){
+        Collections.sort(canhbao_onu_models, new Comparator<canhbao_onu_model>() {
+            @Override
+            public int compare(canhbao_onu_model o1, canhbao_onu_model o2) {
+                return o2.getAddress().compareTo(o1.getAddress());
             }
         });
         adapter.notifyDataSetChanged();

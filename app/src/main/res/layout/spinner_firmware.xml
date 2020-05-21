@@ -10,8 +10,8 @@
         android:layout_height="40dp"
         android:textColor="#000000"
         android:text="Name FW"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal"
         android:layout_marginLeft="5dp"
         android:gravity="center" />
 </RelativeLayout>

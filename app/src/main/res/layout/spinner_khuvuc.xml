@@ -18,7 +18,7 @@
         android:layout_toEndOf="@+id/txt_makhuvuc"
         android:textColor="#000000"
         android:text="Area"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:gravity="center"

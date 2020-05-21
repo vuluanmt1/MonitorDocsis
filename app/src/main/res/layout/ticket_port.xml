@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+            <LinearLayout android:orientation="horizontal"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/txt_onu_act"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="ONU Active"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_onu_inact"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="ONU InActive"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_total_onu"
+                    android:layout_marginLeft="3dp"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Tổng ONU"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_percent_onu_inact"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="% InActive"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_Avg_rxpower"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:background="@color/colorLightGray"
+                    android:textColor="#000000"
+                    android:text="Avg Rx ONU Act"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:background="@color/colorLightGray"
+                    android:text="Time"
+                    android:textSize="14sp"
+                    android:textStyle="normal"/>
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+</LinearLayout>

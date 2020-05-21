@@ -80,7 +80,7 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
            catch (JSONException err) {
                alert_display("Cảnh báo", "Không thể lấy thông tin Data truyền vào API!\n1. " + err.getMessage( ));
            }
-
+            Log.d("Node_current",">>"+json_req);
            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_CURRENT_UPS, json_req, new Response.Listener<JSONObject>() {
                @Override
                public void onResponse(JSONObject response) {
@@ -162,10 +162,8 @@ public class UpstreamCurrentActivity extends AppCompatActivity {
                RequestQueue queue = Volley.newRequestQueue(UpstreamCurrentActivity.this);
                queue.add(jsonObjectRequest);
            }
-
            @Override
            public void onNothingSelected(AdapterView<?> parent) {
-
            }
        });
 

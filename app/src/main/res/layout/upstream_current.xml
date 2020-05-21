@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="56dp">
         <LinearLayout
             android:layout_width="500dp"
             android:orientation="vertical"
@@ -18,105 +12,126 @@
             <LinearLayout
                 android:layout_width="500dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="200dp">
                 <LinearLayout
-                    android:layout_width="260dp"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/btn_ls_node"
+                        android:layout_width="170dp"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/btn_gpon"
+                        android:paddingRight="10dp"
+                        android:scaleType="fitCenter"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/button_lichsu" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="380dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:background="@color/colorDarkBlue"
+                        android:gravity="center"
+                        android:text=" Node "
+                        android:textColor="#F1EDED"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/txt_node_current"
+                        android:layout_width="310dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:gravity="center|left"
+                        android:background="@color/colorLightGray"
+                        android:text=" Node "
+                        android:textColor="#000000"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="200dp">
+                <LinearLayout
+                    android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:orientation="vertical">
-                    <Button
-                        android:id="@+id/btn_ls_node"
-                        android:layout_marginTop="3dp"
-                        android:layout_width="170dp"
-                        android:layout_height="40dp"
-                        android:textColor="#EEEEEE"
-                        android:background="@drawable/custom_button_dialog"
-                        android:text="Xem lịch sử Node" />
                     <LinearLayout
-                        android:layout_width="260dp"
+                        android:layout_width="380dp"
                         android:layout_marginTop="3dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
-                            android:text=" Node "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                            android:text="IFDesc"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
                         <TextView
-                            android:id="@+id/txt_node_current"
-                            android:layout_width="200dp"
-                            android:layout_height="50dp"
+                            android:id="@+id/txt_ifdesc_current"
+                            android:layout_width="310dp"
+                            android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center|left"
+                            android:background="@color/colorLightGray"
                             android:text=" Node "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="260dp"
+                    android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <LinearLayout
-                        android:layout_width="55dp"
+                        android:layout_width="380dp"
+                        android:layout_marginTop="3dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
                         <TextView
-                            android:layout_width="55dp"
+                            android:layout_width="60dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:text=" IFDesc "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="55dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Time "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/txt_ifdesc_current"
-                            android:layout_width="200dp"
-                            android:layout_height="40dp"
-                            android:gravity="center|left"
-                            android:text=" IFDesc "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="normal" />
                         <TextView
                             android:id="@+id/txt_time_current"
-                            android:layout_width="200dp"
+                            android:layout_width="310dp"
                             android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginLeft="3dp"
                             android:gravity="center|left"
-                            android:text=" Time "
+                            android:background="@color/colorLightGray"
+                            android:text=" Node "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
                     </LinearLayout>
-
+                </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -127,81 +142,77 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="7dp"
                 tools:layout_editor_absoluteY="296dp">
-
                 <LinearLayout
-                    android:layout_width="200dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" SNR "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Mer "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Fec "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" UnFec "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Tx "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Rx "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="60dp"
@@ -227,18 +238,19 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="130dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/txt_snr_current"
+                            android:background="@color/colorLightGray"
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:text=" SNR "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -246,10 +258,11 @@
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Mer "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -259,8 +272,9 @@
                             android:layout_marginTop="3dp"
                             android:gravity="center"
                             android:text=" Fec "
+                            android:background="@color/colorLightGray"
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -270,8 +284,9 @@
                             android:layout_marginTop="3dp"
                             android:gravity="center"
                             android:text=" UnFec "
+                            android:background="@color/colorLightGray"
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -282,7 +297,8 @@
                             android:gravity="center"
                             android:text=" Tx "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:background="@color/colorLightGray"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -293,7 +309,8 @@
                             android:gravity="center"
                             android:text=" Rx "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:background="@color/colorLightGray"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
                         <TextView
                             android:id="@+id/txt_cmtsid_current"
@@ -320,107 +337,64 @@
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="200dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="3dp"
                     android:orientation="horizontal">
                     <LinearLayout
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Act "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Total "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
 
                         <TextView
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
                             android:text=" Reg "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
 
-                        <TextView
-                            android:layout_width="60dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:text=" Fre "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="60dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:text=" With "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="60dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:text=" MicRef "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="60dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:text=" Mod "
-                            android:textColor="#000000"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="130dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:orientation="vertical">
-
                         <TextView
                             android:id="@+id/txt_act_curent"
                             android:layout_width="60dp"
                             android:layout_height="40dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Act "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -428,10 +402,11 @@
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Total "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -439,21 +414,88 @@
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Reg "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@color/colorDarkBlue"
+                            android:gravity="center"
+                            android:text=" Fre "
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@color/colorDarkBlue"
+                            android:gravity="center"
+                            android:text=" With "
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@color/colorDarkBlue"
+                            android:gravity="center"
+                            android:text=" MicRef "
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@color/colorDarkBlue"
+                            android:gravity="center"
+                            android:text=" Mod "
+                            android:textColor="#F1EDED"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:orientation="vertical">
                         <TextView
                             android:id="@+id/txt_fre_curent"
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Fre "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -461,42 +503,36 @@
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" With "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <TextView
                             android:id="@+id/txt_micref_curent"
                             android:layout_width="60dp"
                             android:layout_height="40dp"
+                            android:background="@color/colorLightGray"
                             android:layout_marginTop="3dp"
                             android:gravity="center"
                             android:text=" MicRef "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
-
                         <TextView
                             android:id="@+id/txt_mode_curent"
                             android:layout_width="60dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="3dp"
+                            android:background="@color/colorLightGray"
                             android:gravity="center"
                             android:text=" Mod "
                             android:textColor="#000000"
-                            android:textSize="14dp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
                     </LinearLayout>
-
                 </LinearLayout>
-
-
             </LinearLayout>
-        </LinearLayout>
-
-    </HorizontalScrollView>
-
-
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.monitordocsis.ui.quanlyonu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -34,10 +36,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.monitordocsis.Global;
+import com.example.monitordocsis.MainActivity;
 import com.example.monitordocsis.R;
 import com.example.monitordocsis.khuvuc.areaAdapter;
 import com.example.monitordocsis.khuvuc.areaModel;
 import com.example.monitordocsis.permissionUser;
+import com.example.monitordocsis.url.urlData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,8 +58,8 @@ public class FragmentQuanlyOnu extends Fragment {
     private JSONArray json_arr_result;
     private JSONObject json_obj;
     private JSONArray json_arr_area;
-    public static final String URL_BASE_AREA = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_area.php";
-    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_onu.php";
+//    public static final String URL_BASE_AREA = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_area.php";
+//    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_onu.php";
       private ArrayList<areaModel> mAreaList;
       private ArrayList<quanlyOnuModel>mONUList;
       private quanlyOnuAdapter mOnuAdapter;
@@ -64,13 +68,15 @@ public class FragmentQuanlyOnu extends Fragment {
       private Switch swt_signal, swt_status, swt_tr069;
       private Boolean checkErrSignal =false,checkStatus =false,checkTR069= false;
       private String donVi;
+        private String version;
+        private String usercode ;
       private Button btn_search;
       private EditText edt_maonu;
-      private TextView txt_search;
+      private ImageView txt_search,txt_search_onu;
     private View root;
     Spinner spinnerArea;
     private TextView txt_maolt, txt_maonu, txt_port,txt_onuid,txt_status, txt_mode,
-            txt_profile,txt_firmware, txt_rx, txt_deactive, txt_inactive, txt_model;
+            txt_profile,txt_firmware, txt_rx, txt_deactive, txt_inactive, txt_model, txt_total_onu;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,9 +87,18 @@ public class FragmentQuanlyOnu extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         permissionUser user = (permissionUser) getContext().getApplicationContext();
+        version =user.getVersion();
+        final String url_base_area = urlData.url+version+"/api_load_area.php";
+        final String url_base= urlData.url+version+"/api_load_onu.php";
         donVi = user.getUnit();
-        loadArea(URL_BASE_AREA);
+        usercode = user.getEmail();
+        if(usercode.isEmpty()){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+        loadArea(url_base_area);
         root = inflater.inflate(R.layout.fragment_quanly_onu, container, false);
+        txt_total_onu = root.findViewById(R.id.txt_total_onu);
         recView = root.findViewById(R.id.recView);
         progBar = root.findViewById(R.id.progBar);
         layoutSearch =root.findViewById(R.id.layout_search);
@@ -91,6 +106,7 @@ public class FragmentQuanlyOnu extends Fragment {
         progBar.setVisibility(View.INVISIBLE);
         txt_search = root.findViewById(R.id.txt_search);
         btn_search = root.findViewById(R.id.btn_search);
+        txt_search_onu = root.findViewById(R.id.txt_search_onu);
         spinnerArea = root.findViewById(R.id.cb_khuvuc);
         swt_signal =root.findViewById(R.id.swt_tinhieu);
         swt_status =root.findViewById(R.id.swt_status);
@@ -101,10 +117,12 @@ public class FragmentQuanlyOnu extends Fragment {
             @Override
             public void onClick(View view) {
                 Global.animator_button(view);
-                if(layoutSearch.getVisibility()==View.VISIBLE){
-                    layoutSearch.setVisibility(View.GONE);
-                }else{
+                if(layoutSearch.getVisibility()==View.GONE){
                     layoutSearch.setVisibility(View.VISIBLE);
+                    recView.setVisibility(View.GONE);
+                }else{
+                    layoutSearch.setVisibility(View.GONE);
+                    recView.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -148,10 +166,11 @@ public class FragmentQuanlyOnu extends Fragment {
                 }
             }
         });
-        btn_search.setOnClickListener(new View.OnClickListener() {
+        txt_search_onu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Global.animator_button(v);
+                recView.setVisibility(View.GONE);
                 progBar.setVisibility(View.VISIBLE);
                 if(layoutSearch.getVisibility()==View.VISIBLE){
                     layoutSearch.setVisibility(View.GONE);
@@ -180,14 +199,15 @@ public class FragmentQuanlyOnu extends Fragment {
                         json_api.put("donvi",donVi);
                         json_api.put("data", json_data);
                     }catch (Exception err){
-                        alert_display("Cảnh báo", "Không thể lấy thông tin từ Post Data!\n1. " + err.getMessage( ));
+                        alert_display("Cảnh báo", "Không thể lấy thông tin ");
                     }
                     Log.d("json_api",">>>"+json_api);
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_BASE, json_api, new Response.Listener<JSONObject>() {
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url_base, json_api, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
                                 json_arr_result = response.getJSONArray("data");
+                                txt_total_onu.setText(response.getString("recordsTotal"));
                                 mONUList = new ArrayList<quanlyOnuModel>();
                                 for(int i=0; i < json_arr_result.length(); i++){
                                     json_obj =json_arr_result.getJSONObject(i);
@@ -197,22 +217,22 @@ public class FragmentQuanlyOnu extends Fragment {
                                             json_obj.getString("PROFILEREG"), json_obj.getString("FIRMWARE"),
                                             json_obj.getString("RXPOWER"),json_obj.getString("DEACTIVE_REASON"),json_obj.getString("INACTIVE_TIME"),
                                             json_obj.getString("MODEL"),json_obj.getString("DISTANCE"),
-                                            json_obj.getString("CREATEDATE")));
+                                            json_obj.getString("CREATEDATE"),json_obj.getString("ADDRESS")));
                                 }
-                                recView = (RecyclerView)root.findViewById(R.id.recView);
+                                recView.setVisibility(View.VISIBLE);
                                 progBar = root.findViewById(R.id.progBar);
                                 mOnuAdapter = new quanlyOnuAdapter(getContext(),mONUList);
                                 recView.setLayoutManager(new LinearLayoutManager(getActivity()));
                                 recView.setAdapter(mOnuAdapter);
                                 progBar.setVisibility(View.GONE);
                             }catch (Exception err){
-                                alert_display("Cảnh báo", "Không thể lấy thông tin 2!\n"+ err.getMessage( ));
+                                alert_display("Cảnh báo", "Không thể lấy thông tin ");
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                            alert_display("Cảnh báo", "Không thể lấy thông tin");
                         }
                     });
                     Volley.newRequestQueue(getActivity()).add(request);
@@ -444,13 +464,13 @@ public class FragmentQuanlyOnu extends Fragment {
                     mAdapter = new areaAdapter(getActivity(),mAreaList);
                     spinnerArea.setAdapter(mAdapter);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n1. " + error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);

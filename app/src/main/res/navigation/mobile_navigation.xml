@@ -10,25 +10,11 @@
         android:name="com.example.monitordocsis.ui.gpon.fragment_canhbao_onu"
         android:label="@string/menu_canhbaoonu"
         tools:layout="@layout/fragment_canhbaoonu" />
-
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.monitordocsis.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.monitordocsis.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.monitordocsis.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
+        android:id="@+id/nav_follow_onu"
+        android:name="com.example.monitordocsis.ui.theodoionu.FragmentFollowOnu"
+        android:label="@string/menu_follow_onu"
+        tools:layout="@layout/fragment_follow_onu" />
     <fragment
         android:id="@+id/nav_ql_olt"
         android:name="com.example.monitordocsis.ui.quanlyolt.FragmentQuanlyOLT"
@@ -40,5 +26,20 @@
         android:name="com.example.monitordocsis.ui.quanlyonu.FragmentQuanlyOnu"
         android:label="@string/menu_onu"
         tools:layout="@layout/fragment_quanly_onu" />
+    <fragment
+        android:id="@+id/nav_email_support"
+        android:name="com.example.monitordocsis.ui.support.FragmentEmailSupport"
+        android:label="@string/menu_support"
+        tools:layout="@layout/fragment_email_support" />
+    <fragment
+        android:id="@+id/nav_ticket"
+        android:name="com.example.monitordocsis.ui.ticket.FragmentTicket"
+        android:label="@string/menu_ticket"
+        tools:layout="@layout/fragment_ticket" />
+    <fragment
+        android:id="@+id/nav_ticket_tab"
+        android:name="com.example.monitordocsis.ui.ticket.layoutTabTicket"
+        android:label="@string/menu_ticket"
+        tools:layout="@layout/fragment_ticket" />
 
 </navigation>

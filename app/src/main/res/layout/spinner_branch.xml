@@ -6,22 +6,22 @@
     <TextView
         android:id="@+id/txt_code"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
+        android:layout_height="20dp"
+        android:textSize="12sp"
         android:visibility="gone"
         android:text="Code" />
 
     <TextView
         android:id="@+id/txt_des"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_toEndOf="@+id/txt_code"
         android:textColor="#000000"
         android:text="Description"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal"
         android:layout_marginLeft="5dp"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_toRightOf="@+id/txt_code" />
 
 </RelativeLayout>

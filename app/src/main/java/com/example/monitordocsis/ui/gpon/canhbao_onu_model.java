@@ -15,8 +15,9 @@ public class canhbao_onu_model {
     private String model;
     private String distance;
     private String datetime;
+    private String address;
 
-    public canhbao_onu_model(String maolt, String maonu, String port, String onuid, String status, String mode, String profile, String firmware, String rx, String deactiveReason, String inactTime, String model, String distance, String datetime) {
+    public canhbao_onu_model(String maolt, String maonu, String port, String onuid, String status, String mode, String profile, String firmware, String rx, String deactiveReason, String inactTime, String model, String distance, String datetime, String address) {
         this.maolt = maolt;
         this.maonu = maonu;
         this.port = port;
@@ -31,6 +32,7 @@ public class canhbao_onu_model {
         this.model = model;
         this.distance = distance;
         this.datetime = datetime;
+        this.address =address;
     }
 
     public String getMaolt() {
@@ -143,5 +145,13 @@ public class canhbao_onu_model {
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

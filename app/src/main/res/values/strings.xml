@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">MonitorDocsis</string>
+    <string name="app_name">MCab</string>
+    <string name="copyright">Trung tâm Hạ Tầng Viễn Thông\n© 2020 VTVcab</string>
     <string name="btn_info">Thông tin</string>
     <string name="btn_rate">Bình chọn</string>
     <string name="btn_start">Bắt đầu</string>
-    <string name="btn_dialogs">3000 Câu hội thoại giao tiếp cơ bản</string>
-    <string name="btn_name">Tên tiếng Trung của bạn là gì?</string>
+    <string name="btn_docsis">Hệ thống Monitor Docsis</string>
+    <string name="btn_gpon">Hệ thống Monitor GPON</string>
     <string name="btn_word">Các nhóm từ thường sử dụng trong đời sống</string>
     <string name="btn_byword">Thành ngữ tục ngữ</string>
     <string name="btn_listening">Lắng nghe</string>
@@ -29,19 +30,32 @@
     <string name="btn_confirm_popup">Xác nhận</string>
     <string name="title_activity_upstream_his">UpstreamHisActivity</string>
     <string name="title_activity_gpon">gpon</string>
+    <string name="title_drawer_1"><font fgcolor="#2264cf">Cảnh Báo Tín Hiệu</font></string>
+    <string name="title_drawer_mb"><font fgcolor="#2264cf">Hệ Thống Giám Sát Miền Bắc</font></string>
+    <string name="title_drawer_mn"><font fgcolor="#2264cf">Hệ Thống Giám Sát Miền Nam</font></string>
+    <string name="title_drawer_2"><font fgcolor="#2264cf">Quản Lý Hệ Thống</font></string>
+    <string name="title_drawer_3"><font fgcolor="#2264cf">Thông Tin Người Dùng</font></string>
+    <string name="title_drawer_4"><font fgcolor="#2264cf">Thông Tin Hỗ Trợ</font></string>
+    <string name="title_infor_ticket">Thông Tin Ticket</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Monitor GPon</string>
-    <string name="nav_header_subtitle">vienthong@vtvcab.vn</string>
+    <string name="nav_header_title">Giám sát hạ tầng mạng GPON</string>
+    <string name="nav_header_title_docsis">Giám sát hạ tầng mạng Docsis</string>
+    <string name="nav_header_title_docsis_mn">Monitor Docsis Miền Nam</string>
+    <string name="nav_header_subtitle">Trung tâm Hạ Tầng Viễn Thông</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_canhbaoonu">Cảnh báo ONU</string>
+    <string name="menu_follow_onu">Theo dõi ONU</string>
+    <string name="menu_ticket">Ticket Gpon</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_olt">Quản lý OLT</string>
     <string name="menu_onu">Quản lý ONU</string>
-    <string name="menu_test">Test</string>
+    <string name="menu_support">Support System</string>
+    <string name="menu_sigout">Đăng Xuất</string>
+    <string name="menu_home">Danh mục hệ thống</string>
 
     <string-array name="tools_array">
         <item>PPPoE</item>
@@ -49,4 +63,12 @@
         <item>Hợp Đồng</item>
         <item>Lịch Sử</item>
     </string-array>
+    <string name="title_activity_layout_ticket">layout_ticket</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_docsis_mb">docsis_mb</string>
+
+    <string name="menu_node">Thông tin Node</string>
+    <string name="menu_cablemodem">Thông tin CM </string>
+    <string name="menu_send">Send</string>
 </resources>

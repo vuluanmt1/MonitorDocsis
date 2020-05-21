@@ -24,6 +24,8 @@ import com.example.monitordocsis.Global;
 import com.example.monitordocsis.R;
 import com.example.monitordocsis.congcu.lichsuAdapter;
 import com.example.monitordocsis.congcu.lichsuModel;
+import com.example.monitordocsis.permissionUser;
+import com.example.monitordocsis.url.urlData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +38,7 @@ import java.util.List;
 
 public class fragment_lichsu extends Fragment {
     View view;
-    private static final String URL_TELNET ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/telnet/getTelnet.php";
+//    private static final String URL_TELNET ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/telnet/getTelnet.php";
     private JSONArray json_arr_result;
     private JSONObject json_obj;
     private RecyclerView recyclerView;
@@ -44,6 +46,7 @@ public class fragment_lichsu extends Fragment {
     private lichsuAdapter adapter;
     private List<lichsuModel> mListHis;
     private TextView txt_status, txt_rx,  txt_datetime;
+    private String donVi,branch,usercode,version;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,12 @@ public class fragment_lichsu extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_lichsu_onu,container,false);
+        permissionUser user = (permissionUser) getContext().getApplicationContext();
+        donVi = user.getUnit();
+        branch =user.getBranch();
+        usercode = user.getEmail();
+        version =user.getVersion();
+        String url = urlData.url+version+"/telnet/getTelnet.php";
         Bundle bundle = getArguments();
         String maolt =bundle.getString("maolt");
         String maonu =bundle.getString("maonu");
@@ -80,13 +89,12 @@ public class fragment_lichsu extends Fragment {
             json_req.put("data", json_data);
         }
         catch (JSONException err) {
-            alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+            alert_display("Cảnh báo", "Không thể lấy thông tin ");
         }
         Log.d("json_req",">>"+json_req);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_TELNET, json_req, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, json_req, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("response",">>"+response);
                 try {
                     json_arr_result = response.getJSONArray("data");
                     mListHis = new ArrayList<lichsuModel>();
@@ -107,13 +115,13 @@ public class fragment_lichsu extends Fragment {
                     recyclerView.setAdapter(adapter);
                     progBar.setVisibility(View.GONE);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin từ onResponse!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin ");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin onErrorResponse!\n"+ error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);

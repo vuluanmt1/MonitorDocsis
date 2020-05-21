@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/custom_layout_dialog"
-    android:layout_width="370dp"
+    android:layout_width="match_parent"
     android:layout_height="430dp">
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -12,31 +12,16 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:background="@color/colorWhite"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="39dp">
+        tools:layout_editor_absoluteY="30dp">
         <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="370dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <ImageButton
-                android:id="@+id/reset_onu_dialog_close"
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/error_7_128_1"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorLightGray"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -49,29 +34,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="50dp"
+                android:gravity="center"
                 android:orientation="horizontal">
-                <TextView
+                <ImageView
                     android:id="@+id/txt_close"
-                    android:layout_width="120dp"
+                    android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/custom_text_3"
-                    android:layout_marginLeft="30dp"
-                    android:gravity="center"
-                    android:drawableLeft="@drawable/ic_close_white_24dp"
-                    android:text="No"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-                <TextView
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_khong" />
+                <ImageView
                     android:id="@+id/txt_confim"
-                    android:layout_width="120dp"
+                    android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="60dp"
-                    android:background="@drawable/custom_text_1"
-                    android:drawableLeft="@drawable/ic_done_black_24dp"
-                    android:gravity="center"
-                    android:text="Yes"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"/>
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/button_co" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

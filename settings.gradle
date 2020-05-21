@@ -1,2 +1,2 @@
 include ':app', ':customseekbar2', ':seekbar'
-rootProject.name='MonitorDocsis'
+rootProject.name='Monitor'

@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.monitordocsis">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:name=".permissionUser"
+        android:debuggable="false"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/logo_monitor_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:ignore="HardcodedDebugMode">
+        <activity android:name=".PlashScreenActivity"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".docsis_mb"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_docsis_mb"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.ticket.layoutTabTicket" />
+        <activity
+            android:name=".ui.ticket.layout_ticket"
+            android:label="@string/title_activity_layout_ticket"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".gpon"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_gpon"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpstreamCurrentActivity" />
@@ -24,14 +45,7 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".UpstreamchannelActivity" />
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".MainActivity">
         </activity>
     </application>
-
 </manifest>

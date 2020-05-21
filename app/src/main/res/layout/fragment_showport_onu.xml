@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="false"
-        android:indeterminateTint="#F39C2D"
+        android:indeterminateTint="#2264cf"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="@+id/scrollView"
         app:layout_constraintStart_toStartOf="@+id/scrollView"
@@ -46,15 +46,16 @@
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_width="match_parent">
                         <TextView
-                            android:layout_width="105dp"
+                            android:layout_width="83dp"
                             android:layout_height="40dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
                             android:text=" Tool "
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_maolt"
@@ -62,8 +63,8 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
                             android:text="Mã OLT"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -73,32 +74,21 @@
                             android:layout_height="40dp"
                             android:gravity="center"
                             android:layout_marginLeft="3dp"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
                             android:text="Mã ONU"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/txt_portpon"
-                            android:layout_marginLeft="3dp"
-                            android:layout_width="50dp"
-                            android:layout_height="40dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Port"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_onuid"
-                            android:layout_width="50dp"
+                            android:id="@+id/txt_address"
+                            android:layout_width="350dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="ONU ID"
-                            android:textSize="14sp"
+                            android:text="Địa chỉ"
+                            android:textColor="#FAF9F9"
+                            android:textSize="14dp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_status"
@@ -106,42 +96,9 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
                             android:text="Status"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_mode"
-                            android:layout_width="70dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Mode"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_profile"
-                            android:layout_width="100dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Profile"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/txt_firmware"
-                            android:layout_width="100dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:background="@color/colorGray"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:text="Firmware"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
@@ -150,43 +107,21 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
                             android:text="RxPw"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/txt_deact"
-                            android:layout_width="120dp"
+                            android:id="@+id/txt_firmware"
+                            android:layout_width="100dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
+                            android:background="@color/colorDarkBlue"
                             android:gravity="center"
-                            android:background="@color/colorGray"
-                            android:textColor="#000000"
-                            android:text="Deactive Reason"
+                            android:textColor="#FAF9F9"
+                            android:text="Firmware"
                             android:textSize="14sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/txt_intime"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
-                            android:text="Inactive Time"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/txt_model"
-                            android:layout_width="70dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
-                            android:text="Model"
-                            android:textSize="14dp"
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/txt_distance"
@@ -194,8 +129,8 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
                             android:text="Khoảng cách (m)"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
@@ -205,9 +140,88 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="3dp"
                             android:gravity="center"
-                            android:textColor="#000000"
-                            android:background="@color/colorGray"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
                             android:text="Time"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/txt_portpon"
+                            android:layout_marginLeft="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
+                            android:text="Port"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_onuid"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
+                            android:text="ONU ID"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_mode"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
+                            android:text="Mode"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_profile"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
+                            android:text="Profile"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_model"
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
+                            android:text="Model"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_deact"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:background="@color/colorDarkBlue"
+                            android:textColor="#FAF9F9"
+                            android:text="Nguyên Nhân"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/txt_intime"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:textColor="#FAF9F9"
+                            android:background="@color/colorDarkBlue"
+                            android:text="Khoảng thời gian mất"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -219,6 +233,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recView"
                         android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                     </androidx.recyclerview.widget.RecyclerView>
@@ -226,5 +241,40 @@
             </LinearLayout>
         </HorizontalScrollView>
     </ScrollView>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/colorLightGray"
+                android:gravity="center"
+                android:text="Số lượng :"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_total_onu"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/colorLightGray"
+                android:gravity="left"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,10 +6,9 @@
         android:id="@+id/txt_cmtsid"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:visibility="gone"
         android:text="cmtsid" />
-
     <TextView
         android:id="@+id/txt_cmtsName"
         android:layout_width="wrap_content"
@@ -17,10 +16,9 @@
         android:layout_toEndOf="@+id/txt_cmtsid"
         android:textColor="#000000"
         android:text="cmtsName"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal"
         android:layout_marginLeft="5dp"
         android:gravity="left"
         android:layout_toRightOf="@+id/txt_cmtsid" />
-
 </RelativeLayout>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_layout"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="470dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Chi nhánh"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="CMTS"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Địa chỉ Mac"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/cb_branch"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="3dp"
+                android:spinnerMode="dropdown"
+                android:gravity="center|left"
+                android:background="@drawable/custom_spinner"/>
+            <Spinner
+                android:id="@+id/cb_cmts"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown"
+                android:gravity="center|left"
+                android:background="@drawable/custom_spinner"/>
+            <EditText
+                android:id="@+id/edt_search_cm"
+                android:layout_width="220dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:textIsSelectable="true"
+                android:gravity="center"
+                android:inputType="text"
+                android:textSize="12sp"
+                android:hint="Nhập địa chỉ Mac"
+                android:background="@drawable/custom_editext" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="470dp"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="470dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cảnh Báo"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <Switch
+                    android:id="@+id/swt_warning"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="470dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fec"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edt_min_fec"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Min"
+                    android:inputType="numberDecimal"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+                <EditText
+                    android:id="@+id/edt_max_fec"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="UnFec"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edt_min_Unfec"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:hint="Min"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt_max_Unfec"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="470dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="SNR"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_min_Snr"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:hint="Min"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt_max_Snr"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Mer"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edt_min_Mer"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:hint="Min"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt_max_Mer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="470dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="TxPw"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edt_min_Tx"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:hint="Min"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt_max_Tx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="RxPw"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edt_min_Rx"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:hint="Min"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt_max_Rx"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:hint="Max"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/txt_search"
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/btn_gpon"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                app:srcCompat="@drawable/button_timkiem" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

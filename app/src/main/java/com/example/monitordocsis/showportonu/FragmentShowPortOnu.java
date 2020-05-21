@@ -27,6 +27,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.monitordocsis.Global;
 import com.example.monitordocsis.R;
+import com.example.monitordocsis.permissionUser;
+import com.example.monitordocsis.url.urlData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +39,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class FragmentShowPortOnu extends Fragment {
-    public static final String URL_BASE_OLT = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_olt.php";
+//    public static final String URL_BASE_OLT = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/gpon/api_load_olt.php";
     View view;
     private JSONArray json_arr_result;
     private JSONObject json_obj;
@@ -45,7 +47,8 @@ public class FragmentShowPortOnu extends Fragment {
     private ProgressBar progBar;
     private ArrayList<ShowPortOnuModel>mListPortONU;
     private ShowPortOnuAdapter mShowPortAdapter;
-    private TextView txt_maonu, txt_onuid,txt_status,txt_firmware, txt_rx, txt_model;
+    private TextView txt_maonu, txt_onuid,txt_status,txt_firmware, txt_rx, txt_model, txt_total_onu;
+    private String version;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,10 @@ public class FragmentShowPortOnu extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_showport_onu,container,false);
+        permissionUser user = (permissionUser) (getContext().getApplicationContext());
+        version =user.getVersion();
+        final String url_base_olt = urlData.url+version+"/api_load_olt.php";
+        txt_total_onu = view.findViewById(R.id.txt_total_onu);
         Bundle bundle = getArguments();
         String khuvuc =bundle.getString("khuvuc");
         String maolt =bundle.getString("maolt");
@@ -74,14 +81,15 @@ public class FragmentShowPortOnu extends Fragment {
             json_req.put("data", json_arr_item);
         }
         catch (JSONException err) {
-            alert_display("Cảnh báo", "Không thể lấy thông tin 1!\n1. " + err.getMessage( ));
+            alert_display("Cảnh báo", "Không thể lấy thông tin ");
         }
         Log.d("json_req",">>>"+json_req);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_BASE_OLT, json_req, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url_base_olt, json_req, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     json_arr_result = response.getJSONArray("data");
+                    txt_total_onu.setText(response.getString("recordsTotal"));
                     mListPortONU = new ArrayList<ShowPortOnuModel>();
                     for(int i=0; i < json_arr_result.length(); i++){
                         json_obj =json_arr_result.getJSONObject(i);
@@ -91,7 +99,7 @@ public class FragmentShowPortOnu extends Fragment {
                                 json_obj.getString("PROFILEREG"), json_obj.getString("FIRMWARE"),
                                 json_obj.getString("RXPOWER"),json_obj.getString("DEACTIVE_REASON"),
                                 json_obj.getString("INACTIVE_TIME"),json_obj.getString("MODEL"),
-                                json_obj.getString("DISTANCE"),json_obj.getString("CREATEDATE")));
+                                json_obj.getString("DISTANCE"),json_obj.getString("CREATEDATE"),json_obj.getString("ADDRESS")));
                     }
                     recyclerView = view.findViewById(R.id.recView);
                     progBar = view.findViewById(R.id.progBar);
@@ -100,13 +108,13 @@ public class FragmentShowPortOnu extends Fragment {
                     recyclerView.setAdapter(mShowPortAdapter);
                     progBar.setVisibility(View.GONE);
                 }catch (Exception err){
-                    alert_display("Cảnh báo", "Không thể lấy thông tin từ onResponse!\n1. " + err.getMessage( ));
+                    alert_display("Cảnh báo", "Không thể lấy thông tin");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                alert_display("Cảnh báo", "Không thể lấy thông tin từ onErrorResponse!\n1. " + error.getMessage( ));
+                alert_display("Cảnh báo", "Không thể lấy thông tin ");
             }
         });
         Volley.newRequestQueue(getActivity()).add(request);

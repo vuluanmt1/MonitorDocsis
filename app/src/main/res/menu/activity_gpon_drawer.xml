@@ -18,9 +18,9 @@
                     android:icon="@drawable/ic_trending_up_black_24dp"
                     android:title="@string/menu_follow_onu"/>
                 <item
-                    android:id="@+id/nav_ticket"
+                    android:id="@+id/nav_ticket_gpon"
                     android:icon="@drawable/icon_ticket"
-                    android:title="@string/menu_ticket"/>
+                    android:title="@string/menu_ticket_gpon" />
             </menu>
         </item>
     </group>
@@ -63,6 +63,11 @@
                 android:id="@+id/id_phone"
                 android:icon="@drawable/ic_contact_phone_black_24dp"
                 android:title="Hotline" />
+            <item
+                android:id="@+id/nav_gpon_doc"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Tài liệu hướng dẫn" />
+
         </menu>
     </item>
 </menu>

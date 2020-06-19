@@ -7,14 +7,16 @@ public class ticketPortModel  {
     private String onuPercentInActive;
     private String onuAvgActive;
     private String createDate;
+    private String slOnuErr;
 
-    public ticketPortModel(String onuActive, String onuInActive, String onuTotal, String onuPercentInActive, String onuAvgActive, String createDate) {
+    public ticketPortModel(String onuActive, String onuInActive, String onuTotal, String onuPercentInActive, String onuAvgActive, String createDate,String slOnuErr) {
         this.onuActive = onuActive;
         this.onuInActive = onuInActive;
         this.onuTotal = onuTotal;
         this.onuPercentInActive = onuPercentInActive;
         this.onuAvgActive = onuAvgActive;
         this.createDate = createDate;
+        this.slOnuErr =slOnuErr;
     }
 
     public String getOnuActive() {
@@ -63,5 +65,13 @@ public class ticketPortModel  {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public String getSlOnuErr() {
+        return slOnuErr;
+    }
+
+    public void setSlOnuErr(String slOnuErr) {
+        this.slOnuErr = slOnuErr;
     }
 }

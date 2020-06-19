@@ -6,9 +6,9 @@ import com.example.monitordocsis.permissionUser;
 
 public class urlData  extends Application {
 
-    public static final String url ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
-    public static final String url1 ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
-    public static final String url_docsis_mb ="http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
+    public static final String url ="https://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
+    public static final String url1 ="https://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
+    public static final String url_docsis_mb ="https://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/";
     permissionUser user = (permissionUser) getApplicationContext();
     String verison  = user.getVersion();
     public   final String URL_TELNET =url+verison+"/telnet/getTelnet.php";

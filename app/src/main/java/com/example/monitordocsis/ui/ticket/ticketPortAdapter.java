@@ -44,20 +44,25 @@ public class ticketPortAdapter extends RecyclerView.Adapter<ticketPortAdapter.Vi
         holder.txt_onuPercentInActive.setText(item.getOnuPercentInActive());
         holder.txt_onuAvgActive.setText(item.getOnuAvgActive());
         holder.txt_time.setText(item.getCreateDate());
+        holder.txt_slOnuErr.setText(item.getSlOnuErr());
         int percent_inact = Integer.parseInt(holder.txt_onuPercentInActive.getText().toString());
         if(percent_inact >30 && percent_inact <50){
             holder.txt_onuPercentInActive.setBackgroundResource(R.color.colorYellow);
             holder.txt_onuPercentInActive.setTextColor(Color.BLACK);
+            holder.txt_onuPercentInActive.setText(percent_inact+"%");
         }else if(percent_inact >=50 && percent_inact<70){
             holder.txt_onuPercentInActive.setBackgroundResource(R.color.colorOrange);
             holder.txt_onuPercentInActive.setTextColor(Color.BLACK);
+            holder.txt_onuPercentInActive.setText(percent_inact+"%");
         }else if(percent_inact >=70){
             holder.txt_onuPercentInActive.setBackgroundResource(R.color.colorRed);
             holder.txt_onuPercentInActive.setTextColor(Color.BLACK);
+            holder.txt_onuPercentInActive.setText(percent_inact+"%");
         }
         else{
             holder.txt_onuPercentInActive.setBackgroundResource(R.color.colorLightGray);
             holder.txt_onuPercentInActive.setTextColor(Color.BLACK);
+            holder.txt_onuPercentInActive.setText(percent_inact+"%");
         }
         Double avgRx = Double.parseDouble(holder.txt_onuAvgActive.getText().toString());
         if(avgRx <=-8 && avgRx >=-28.5){
@@ -81,6 +86,7 @@ public class ticketPortAdapter extends RecyclerView.Adapter<ticketPortAdapter.Vi
             private TextView txt_onuTotal;
             private TextView txt_onuPercentInActive;
             private TextView txt_onuAvgActive;
+            private TextView txt_slOnuErr;
             private TextView txt_time;
 
         public ViewHolder(@NonNull View itemView) {
@@ -90,6 +96,7 @@ public class ticketPortAdapter extends RecyclerView.Adapter<ticketPortAdapter.Vi
             txt_onuTotal = itemView.findViewById(R.id.txt_total_onu);
             txt_onuPercentInActive = itemView.findViewById(R.id.txt_percent_onu_inact);
             txt_onuAvgActive = itemView.findViewById(R.id.txt_Avg_rxpower);
+            txt_slOnuErr = itemView.findViewById(R.id.txt_slOnuErr);
             txt_time = itemView.findViewById(R.id.txt_time);
         }
     }

@@ -279,10 +279,10 @@ public class FragmentNode  extends Fragment {
                             try {
                                 json_arr_result = response.getJSONArray("data");
                                 txt_total_node.setText(response.getString("recordsTotal"));
-                                mListNode = new ArrayList<ModelNode>();
+                                mList = new ArrayList<ModelNode>();
                                 for(int i=0; i < json_arr_result.length(); i++){
                                     json_obj =json_arr_result.getJSONObject(i);
-                                    mListNode.add(new ModelNode(json_obj.getString("IFALIAS"),json_obj.getString("IFDESC"),
+                                    mList.add(new ModelNode(json_obj.getString("IFALIAS"),json_obj.getString("IFDESC"),
                                             json_obj.getString("MERCHANTCODE"),json_obj.getString("IFSIGQSNR"),
                                             json_obj.getString("AVGONLINECMDSSNR"),json_obj.getString("FECCORRECTED"),
                                             json_obj.getString("FECUNCORRECTABLE"), json_obj.getString("AVGONLINECMUSPOWER"),
@@ -293,7 +293,7 @@ public class FragmentNode  extends Fragment {
                                 recyclerView.setVisibility(View.VISIBLE);
                                 recyclerView = (RecyclerView)view.findViewById(R.id.recView);
                                 progBar = view.findViewById(R.id.progBar);
-                                mAdapter = new AdapterNode(getContext(),mListNode);
+                                mAdapter = new AdapterNode(getContext(),mList);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                                 recyclerView.setAdapter(mAdapter);
                                 progBar.setVisibility(View.GONE);

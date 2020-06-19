@@ -41,5 +41,15 @@
         android:name="com.example.monitordocsis.ui.ticket.layoutTabTicket"
         android:label="@string/menu_ticket"
         tools:layout="@layout/fragment_ticket" />
+    <fragment
+        android:id="@+id/nav_gpon_doc"
+        android:name="com.example.monitordocsis.ui.document.FragmentGPONDoc"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+    <fragment
+        android:id="@+id/nav_ticket_gpon"
+        android:name="com.example.monitordocsis.ui.ticket.FragmentTicketGpon"
+        android:label="@string/menu_ticket_gpon"
+        tools:layout="@layout/fragment_ticket_gpon" />
 
 </navigation>

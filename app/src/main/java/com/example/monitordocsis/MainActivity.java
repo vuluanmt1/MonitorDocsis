@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,9 +25,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.appupdate.testing.FakeAppUpdateManager;
 import com.google.android.play.core.install.InstallState;
 import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
@@ -37,6 +40,9 @@ import com.google.android.play.core.tasks.Task;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     private EditText txt_username;
@@ -47,12 +53,11 @@ public class MainActivity extends AppCompatActivity {
     private Boolean login;
     private JSONArray json_arr_result;
     private JSONObject json_obj;
-//    public static final String URL_BASE = "http://10.0.2.2/dev/generalmanagementsystem/api/android/index.php";
-//    public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/index_1.php";
     public static final String URL_BASE = "http://noc.vtvcab.vn:8182/generalmanagementsystem/api/android/index.php";
     private SharedPreferences sharedPreferences;
     private static final int REQ_CODE_VERSION_UPDATE = 530;
     private AppUpdateManager appUpdateManager;
+    private FakeAppUpdateManager fakeAppUpdateManager;
     private InstallStateUpdatedListener installStateUpdatedListener;
     private CoordinatorLayout drawerLayout;
 
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkForAppUpdate();
         txt_username =findViewById(R.id.txt_email);
         txt_password =findViewById(R.id.txt_password);
         btn_login =findViewById(R.id.btn_login);
@@ -71,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         txt_username.setText(sharedPreferences.getString("user_name",""));
         txt_password.setText(sharedPreferences.getString("password",""));
         cb_remember_login.setChecked(sharedPreferences.getBoolean("checked",false));
-        checkForAppUpdate();
     }
     @Override
     protected void onStart() {
@@ -175,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-
             case REQ_CODE_VERSION_UPDATE:
                 if (resultCode != RESULT_OK) { //RESULT_OK / RESULT_CANCELED / RESULT_IN_APP_UPDATE_FAILED
                     Log.d("Update flow failed!",">>" + resultCode);
@@ -186,18 +190,23 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
     @Override
     protected void onDestroy() {
         unregisterInstallStateUpdListener();
         super.onDestroy();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkNewAppVersionState();
+    }
+
     private void checkForAppUpdate(){
         // Creates instance of the manager.
         appUpdateManager = AppUpdateManagerFactory.create(this);
         // Returns an intent object that you use to check for an update.
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        Task<AppUpdateInfo> appUpdateInfoTask = fakeAppUpdateManager.getAppUpdateInfo();
         installStateUpdatedListener = new InstallStateUpdatedListener() {
             @Override
             public void onStateUpdate(InstallState installState) {
@@ -275,7 +284,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void popupSnackbarForCompleteUpdateAndUnregister(){
-
+        Snackbar snackbar =
+                Snackbar.make(findViewById(android.R.id.content), "An update has just been downloaded.", Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("Restart", view -> appUpdateManager.completeUpdate());
+        snackbar.setActionTextColor(getResources().getColor(android.R.color.white));
+        snackbar.show();
     }
     private void unregisterInstallStateUpdListener() {
         if (appUpdateManager != null && installStateUpdatedListener != null)
@@ -297,6 +310,48 @@ public class MainActivity extends AppCompatActivity {
     private void afterLogout() {
         txt_username.setVisibility(View.VISIBLE);
         txt_password.setVisibility(View.VISIBLE);
+    }
+    private boolean web_update(){
+        try {
+            int curVersion  = BuildConfig.VERSION_CODE;
+            System.out.println("curVersion:"+curVersion);
+            int newVersion = curVersion;
+            String package_name ="htvt.vtvcab.monitorsystem";
+            newVersion = Integer.parseInt(Jsoup.connect("https://play.google.com/store/apps/details?id=" + package_name + "&hl=en")
+                    .timeout(30000)
+                    .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                    .referrer("http://www.google.com")
+                    .get()
+                    .select("div[itemprop=softwareVersion]")
+                    .first()
+                    .ownText());
+            return (value(curVersion) < value(newVersion)) ? true : false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private long value(int string) {
+        return Long.valueOf( string );
+    }
+    public class VersionChecker extends AsyncTask<String,String,String>{
+        private String newVersion;
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                newVersion = Jsoup.connect("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "&hl=en")
+                        .timeout(30000)
+                        .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                        .referrer("http://www.google.com")
+                        .get()
+                        .select("div[itemprop=softwareVersion]")
+                        .first()
+                        .ownText();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return newVersion;
+        }
     }
 
 }

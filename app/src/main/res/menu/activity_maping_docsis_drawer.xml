@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/id_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/menu_home" />
+    <group android:checkableBehavior="single">
+        <item android:title="@string/title_drawer_map_quanly">
+            <menu>
+                <item
+                    android:id="@+id/nav_suco_nhanh"
+                    android:icon="@drawable/ic_device_hub_black_24dp"
+                    android:title="@string/menu_maping_nhanh"/>
+            </menu>
+        </item>
+    </group>
+    <item android:title="@string/title_drawer_map_update">
+        <menu>
+            <item
+                android:id="@+id/nav_capnhat_cm"
+                android:icon="@drawable/icon_onu"
+                android:title="@string/menu_maping_capnhat_cm"/>
+            <item
+                android:id="@+id/nav_capnhatdokiem"
+                android:icon="@drawable/ic_nature_people_black_24dp"
+                android:title="@string/menu_maping_capnhat_dokiem" />
+        </menu>
+    </item>
+    <item android:title="@string/title_drawer_3">
+        <menu>
+            <item
+                android:id="@+id/id_user"
+                android:icon="@drawable/ic_supervisor_account"
+                android:title="" />
+            <item
+                android:id="@+id/id_branch_user"
+                android:icon="@drawable/ic_account_balance"
+                android:title="" />
+            <item
+                android:id="@+id/nav_signOut"
+                android:iconTint="@color/colorRed"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="@string/menu_sigout"/>
+        </menu>
+    </item>
+    <item android:title="@string/title_drawer_4">
+        <menu>
+            <item
+                android:id="@+id/nav_email_support"
+                android:icon="@drawable/ic_contact_mail_black_24dp"
+                android:title="Email" />
+            <item
+                android:id="@+id/id_phone"
+                android:icon="@drawable/ic_contact_phone_black_24dp"
+                android:title="Hotline" />
+            <item
+                android:id="@+id/nav_gpon_doc"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Tài liệu hướng dẫn" />
+
+        </menu>
+    </item>
+</menu>

@@ -62,7 +62,10 @@
                 android:id="@+id/id_phone"
                 android:icon="@drawable/ic_contact_phone_black_24dp"
                 android:title="Hotline" />
-
+            <item
+                android:id="@+id/nav_docsis_doc"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Tài liệu hướng dẫn" />
         </menu>
     </item>
 </menu>

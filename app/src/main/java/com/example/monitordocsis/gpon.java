@@ -93,7 +93,7 @@ public class gpon extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_canhbaoonu, R.id.nav_ql_olt, R.id.nav_ql_onu,R.id.nav_follow_onu, R.id.nav_ticket)
+                R.id.nav_canhbaoonu, R.id.nav_ql_olt, R.id.nav_ql_onu,R.id.nav_follow_onu, R.id.nav_ticket, R.id.nav_gpon_doc)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

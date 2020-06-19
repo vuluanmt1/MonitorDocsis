@@ -78,7 +78,7 @@ public class FragmentCablemodem  extends Fragment {
     private EditText edt_min_fec,edt_max_fec,edt_min_unfec,edt_max_unfec,
             edt_min_snr,edt_max_snr,edt_min_mer,edt_max_mer,edt_min_tx,
             edt_max_tx,edt_min_rx,edt_max_rx;
-    private TextView txt_mac, txt_address, txt_branch,txt_snr, txt_mer,
+    private TextView txt_mac, txt_address, txt_branch,txt_snr, txt_mer,txt_status,
             txt_fec,txt_unfec, txt_tx, txt_rx,  txt_total_cm;
     private ImageView txt_search,txt_search_cm;
     private String cmstID;
@@ -462,6 +462,21 @@ public class FragmentCablemodem  extends Fragment {
                 }
             }
         });
+        txt_status =view.findViewById(R.id.txt_status);
+        txt_status.setOnClickListener(new View.OnClickListener() {
+            boolean check =false;
+            @Override
+            public void onClick(View v) {
+                Global.animator_button(v);
+                if(check == true){
+                    sortListReductionStatus();
+                    check=false;
+                }else{
+                    sortListIncreaseStatus();
+                    check=true;
+                }
+            }
+        });
         return view;
     }
 
@@ -769,6 +784,25 @@ public class FragmentCablemodem  extends Fragment {
             @Override
             public int compare(ModelCablemodem o1, ModelCablemodem o2) {
                 return Double.valueOf(o2.getRxPower()).compareTo(Double.valueOf(o1.getRxPower()));
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    // Các hàm sắp xem theo Tiêu đề Status
+    private void sortListIncreaseStatus(){
+        Collections.sort(mList, new Comparator<ModelCablemodem>() {
+            @Override
+            public int compare(ModelCablemodem o1, ModelCablemodem o2) {
+                return o1.getStatus().compareTo(o2.getStatus());
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+    }
+    private void sortListReductionStatus(){
+        Collections.sort(mList, new Comparator<ModelCablemodem>() {
+            @Override
+            public int compare(ModelCablemodem o1, ModelCablemodem o2) {
+                return o2.getStatus().compareTo(o1.getStatus());
             }
         });
         mAdapter.notifyDataSetChanged();

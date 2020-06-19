@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_docsis_mb"
+    app:startDestination="@id/nav_suco_nhanh">
+    <fragment
+        android:id="@+id/nav_suco_nhanh"
+        android:name="com.example.monitordocsis.mapping_docsis.FragmentSuCoNhanh"
+        android:label="@string/menu_maping_nhanh"
+        tools:layout="@layout/fragment_node" />
+
+    <fragment
+        android:id="@+id/nav_capnhat_cm"
+        android:name="com.example.monitordocsis.mapping_docsis.FragmentCapnhatCM"
+        android:label="@string/menu_maping_capnhat_cm"
+        tools:layout="@layout/fragment_cablemodem" />
+
+    <fragment
+        android:id="@+id/nav_capnhatdokiem"
+        android:name="com.example.monitordocsis.mapping_docsis.FragmentCapnhatDoKiem"
+        android:label="@string/menu_maping_capnhat_dokiem"
+        tools:layout="@layout/fragment_node" />
+    <fragment
+        android:id="@+id/nav_docsis_doc"
+        android:name="com.example.monitordocsis.ui.document.FragmentDocsisDoc"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+
+
+</navigation>

@@ -160,10 +160,10 @@ public class FragmentTicketPort extends Fragment {
                     mListTicketPort = new ArrayList<ticketPortModel>();
                     for(int i=0; i < json_arr_result.length(); i++){
                         json_obj =json_arr_result.getJSONObject(i);
-                        mListTicketPort.add(new ticketPortModel(json_obj.getString("SUB_ACT"),json_obj.getString("SUB_INACT"),
-                                json_obj.getString("SUB_TOTAL"),
-                                json_obj.getString("PERCENT_INACT"),json_obj.getString("SUB_RXPOWER"),
-                                json_obj.getString("CREATEDATE")));
+                        mListTicketPort.add(new ticketPortModel(json_obj.getString("ACTONU"),json_obj.getString("INACTONU"),
+                                json_obj.getString("TOTALONU"),
+                                json_obj.getString("PERCENT_INACT"),json_obj.getString("AVG_RXPOWER"),
+                                json_obj.getString("CREATEDATE"),json_obj.getString("SUB_TOTAL_ONU_RX_ERROR")));
                     }
                     recView = (RecyclerView)view.findViewById(R.id.recView);
                     progBar = view.findViewById(R.id.progBar);

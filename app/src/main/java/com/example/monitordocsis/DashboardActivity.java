@@ -72,11 +72,8 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Global.animator_button(v);
-                if(!usergroup.contains("PHANMEM")){
-                    alert_display("Thông báo", "Hệ thống đang phát triển");
-                }else{
-
-                }
+                Intent intent = new Intent(DashboardActivity.this, maping_docsis.class);
+                startActivity(intent);
             }
         });
         btn_map_optical.setOnClickListener(new View.OnClickListener() {

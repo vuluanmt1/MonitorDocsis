@@ -111,10 +111,11 @@ public class docsis_mb extends AppCompatActivity {
                 return true;
             }
         });
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_node_mb, R.id.nav_cm_mb,R.id.nav_node_mn,R.id.nav_cm_mn, R.id.nav_send)
+                    R.id.nav_node_mb, R.id.nav_cm_mb,R.id.nav_node_mn,R.id.nav_cm_mn, R.id.nav_docsis_doc)
                     .setDrawerLayout(drawer)
                     .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
